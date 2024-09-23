@@ -13,8 +13,4 @@ Includes instructional videos for all trial types.
 
 Analysis scripts - Matlab:
 Transforms data into format suitable for graph theory analysis.
-Calculates all measures other than graph theory.
-
-Analysis scripts - ??:
-Performs graph theory algorithm on text file data.
-Outputs csv file.
+Calculates all measures other than graph theory e.g. tau, SD
