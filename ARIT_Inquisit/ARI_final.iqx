@@ -1,0 +1,1406 @@
+﻿// Write txt file from .mat - needs R2019 to use writecell
+// load practiceDataArray.mat
+// practiceDataInquisit = practiceArray(:,2)
+// writecell(practiceDataInquisit,'practiceDataInquisit_tab.txt','Delimiter','tab')
+
+// load trialDataArray.mat
+// trialDataInquisit = textArray(:,2)
+// writecell(trialDataInquisit,'trialDataInquisit_tab.txt','Delimiter','tab')
+
+
+
+************************************
+<include experimentdata>
+/ file = "experimentalDataInquisit.txt"
+</include>
+
+<list practicedata>
+/ items = (
+"na"
+"na"
+"na"
+"na"
+"na"
+"na"
+"na"
+"na"
+"na"
+"na"
+"na"
+"na"
+"na"
+"na"
+"na"
+"na"
+"na"
+"na"
+"na"
+"na"
+"both"
+"both"
+"both"
+"left"
+"left"
+"left"
+"right"
+"right"
+"right")
+/ selectionmode = sequence
+</list>
+
+
+************************************
+<defaults>
+// windowsize = (50%, 50%)
+/ txbgcolor = lightgray
+/ screencolor = lightgray
+</defaults>
+
+//////////////// shapes/animations //////////////////
+
+<shape background_cover>
+/ shape = rectangle
+/ color = lightgray
+/ width = 100%
+/ height = 100%
+/ position = (50%, 50%)
+/ erase = false
+</shape>
+
+<shape blankbottomrectangle>
+/ shape = rectangle
+/ color = lightgray
+/ width = 100%
+/ height = values.blankbottomrectangle_y
+/ valign = top
+/ halign = center
+/ position = (50%, 80%)
+/ animation = path(parameters.totalriseduration, 1, 50%, expressions.start_y, 50%, expressions.start_y)
+/ erase = false
+</shape>
+
+<shape blankbottomrectangle_feedback>
+/ shape = rectangle
+/ color = lightgray
+/ width = 100%
+/ height = values.blankbottomrectangle_y
+/ valign = top
+/ halign = center
+/ position = (50%, 80%)
+/ erase = false
+</shape>
+
+<shape blanktoprectangle> // fix until Inquisit fixes their animation timing!!
+/ shape = rectangle
+/ color = lightgray
+/ width = 25%
+/ height = 2%
+/ valign = center
+/ halign = center
+/ position = (50%, expressions.end_y)
+/ animation = path(parameters.totalriseduration, 1, 50%, expressions.end_y, 50%, expressions.end_y)
+/ erase = false
+</shape>
+
+<shape blankbar_left>
+/ shape = rectangle
+/ color = white
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ position = (45%, expressions.end_y)
+/ animation = path(values.left_stop_bar_percent, 1, 45%, expressions.end_y, 45%, expressions.end_y)
+/ erase = false
+</shape>
+
+<shape blankbar_left_feedback>
+/ shape = rectangle
+/ color = white
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ position = (45%, expressions.end_y)
+/ erase = false
+</shape>
+
+<shape blankbar_right>
+/ shape = rectangle
+/ color = white
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ position = (45%, expressions.end_y)
+/ animation = path(values.right_stop_bar_percent, 1, 55%, expressions.end_y, 55%, expressions.end_y)
+/ erase = false
+</shape>
+
+<shape blankbar_right_feedback>
+/ shape = rectangle
+/ color = white
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ position = (55%, expressions.end_y)
+/ erase = false
+</shape>
+
+<shape target_start>
+/ shape = rectangle
+/ color = black
+/ width = 25%
+/ height = 1%
+/ valign = center
+/ halign = center
+/ position = (50%, expressions.location_target)
+// animation = path(parameters.totalriseduration, 1, 50%, expressions.location_target, 50%, expressions.location_target)
+/ erase = false
+</shape>
+
+
+
+////////////////////////////
+<shape target_success>
+/ shape = rectangle
+/ color = green
+/ width = 25%
+/ height = 1%
+/ valign = center
+/ halign = center
+/ position = (50%, expressions.location_target)
+/ erase = false
+</shape>
+
+<shape target_fail>
+/ shape = rectangle
+/ color = red
+/ width = 25%
+/ height = 1%
+/ valign = center
+/ halign = center
+/ position = (50%, expressions.location_target)
+/ erase = false
+</shape>
+
+<shape target_fail_bothfingers>
+/ shape = rectangle
+/ color = red
+/ width = 25%
+/ height = 1%
+/ valign = center
+/ halign = center
+/ position = (50%, expressions.location_target)
+/ erase = false
+</shape>
+
+
+/////////////// bars ////////////////
+
+<shape bar_left_rising>
+/ shape = rectangle
+/ color = black
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ animation = path(values.left_stop_bar_percent, 1, 45%, expressions.start_y, 45%, expressions.bar_left_stop)
+/ erase = false
+</shape>
+
+<shape bar_left_stopped>
+/ shape = rectangle
+/ color = black
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ animation = path(parameters.totalriseduration, 1, 45%, expressions.bar_left_stop, 45%, expressions.bar_left_stop)
+/ erase = false
+</shape>
+
+<shape bar_left_stopped_feedback>
+/ shape = rectangle
+/ color = black
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ position = (45%, expressions.bar_left_stop)
+/ erase = false
+</shape>
+
+<shape bar_right_rising>
+/ shape = rectangle
+/ color = black
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ animation = path(values.right_stop_bar_percent, 1, 55%, expressions.start_y, 55%, expressions.bar_right_stop)
+/ erase = false
+</shape>
+
+<shape bar_right_stopped>
+/ shape = rectangle
+/ color = black
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ animation = path(parameters.totalriseduration, 1, 55%, expressions.bar_right_stop, 55%, expressions.bar_right_stop)
+/ erase = false
+</shape>
+
+<shape bar_right_stopped_feedback>
+/ shape = rectangle
+/ color = black
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ position = (55%, expressions.bar_right_stop)
+/ erase = false
+</shape>
+
+
+//////////////////// feedback-related stimuli /////////////////
+
+<text success>
+/ items = ("             Success             ")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = green
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+<text success_stop>
+/ items = ("       Successful stop       ")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = green
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+<text go_fail>
+/ items = ("Missed target")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = red
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+<text stop_fail>
+/ items = ("           Unsuccessful stop           ")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = red
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+<text stop_error>
+/ items = ("Stopping error - incorrect side")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = red
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+
+<text success_stop_missed_target>
+/ items = ("Successful stop but missed target")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = red
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+<text trial_error>
+/ items = ("Error - finger lifted before trial")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = red
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+<text remove_feedback>
+/ items = ("                                                                         ")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = white
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+************************************
+// Videos and captions
+////////////////
+
+<video trials_video>
+/ items = ("GO trials.mpg", "STOP BOTH trials.mpg", "STOP LEFT trials.mpg", "STOP RIGHT trials.mpg")
+/ select = values.trialtype_number
+/ playthrough = true
+/ position = (50%, 50%)
+/ height = 75%
+</video>
+
+<text video_titles>
+/ items = ("GO trials", "STOP BOTH trials", "STOP LEFT trials", "STOP RIGHT trials")
+/ select = values.trialtype_number
+/ fontstyle = ("Arial", 6%, true)
+/ txcolor = black
+/ position = (50%, 90%)
+/ erase = false
+</text>
+
+///////// 
+// Captions
+
+<text caption1>
+/ items = caption_1
+/ select = values.trialtype_number 
+/ fontstyle = ("Arial", 4%, true, true)
+/ txcolor = black
+/ position = (50%, 90%)
+/ erase = false
+</text>
+
+<item caption_1>
+/ 1 = "  This is the screen you will see at the beginning of each trial. 
+  When you are ready to begin, press and hold down the 
+  ‘z’ and ‘?’ keys with the index fingers of your left and right hand."
+  
+/ 2 = "  For these trials, you will see the same starting screen. 
+  Press and hold the same keys to make the bars rise."
+ 
+/ 3 =  "  For these trials, you will see the same starting screen. 
+  Press and hold the same keys to make the bars rise"
+  
+/ 4 = "  For these trials, you will see the same starting screen. 
+  Press and hold the same keys to make the bars rise"
+</item>
+
+<text caption2>
+/ items = caption_2
+/ select = values.trialtype_number 
+/ fontstyle = ("Arial", 4%, true, true)
+/ txcolor = black
+/ position = (50%, 90%)
+/ erase = false
+</text>
+
+<item caption_2>
+/ 1 = "  The ‘z’ key corresponds to the left bar and the ‘?’ key corresponds to the right bar."
+  
+/ 2 = "  This time, at some point during the rising phase both bars will stop rising."
+ 
+/ 3 =  "  This time, at some point during the rising phase the LEFT bar 
+  will stop rising and the RIGHT bar will continue to rise."
+  
+/ 4 = "  This time, at some point during the rising phase the RIGHT bar 
+  will stop rising and the LEFT bar will continue to rise."
+</item>
+
+<text caption3>
+/ items = caption_3
+/ select = values.trialtype_number 
+/ fontstyle = ("Arial", 4%, true, true)
+/ txcolor = black
+/ position = (50%, 90%)
+/ erase = false
+</text>
+
+<item caption_3>
+/ 1 = "  Once you have pressed these keys you will see both bars rise. 
+  Your aim is to stop the bars rising at the horizontal black line by 
+  lifting both fingers off of the keys, like this."
+  
+/ 2 = "  When this happens, keep both fingers held down on the keys 
+  until you see feedback above the bars."
+ 
+/ 3 =  "  When this happens, keep your LEFT finger held 
+  down and lift your RIGHT finger when the right bar reaches the 
+  horizontal line. Keep your LEFT finger held down on the key until 
+  you see feedback above the bars."
+  
+/ 4 = "  When this happens, keep your RIGHT finger held 
+  down and lift your LEFT finger when the left bar reaches the 
+  horizontal line. Keep your RIGHT finger held down on the key until 
+  you see feedback above the bars."
+</item>
+
+<text caption4>
+/ items = caption_4
+/ select = values.trialtype_number 
+/ fontstyle = ("Arial", 4%, true, true)
+/ txcolor = black
+/ position = (50%, 90%)
+/ erase = false
+</text>
+
+<item caption_4>
+/ 1 = "  If you successfully stop the bars at the horizontal line, 
+  you will see “success” displayed above the bars and the 
+  horizontal line will turn green."
+  
+/ 2 = "  When you keep your fingers held down on the keys, you will 
+  see “success” displayed above the bars and the horizontal line 
+  will turn green, like this. You may then release your fingers from the keys."
+ 
+/ 3 =  "  You will then see “success” displayed above the bars, like this. 
+  You may then release your left finger from the key."
+  
+/ 4 = "  You will then see “success” displayed above the bars, like this. 
+  You may then release your right finger from the key."
+</item>
+
+<text caption5>
+/ items = caption_5
+/ select = values.trialtype_number 
+/ fontstyle = ("Arial", 4%, true, true)
+/ txcolor = black
+/ position = (50%, 90%)
+/ erase = false
+</text>
+
+<item caption_5>
+/ 1 = "  After you have received this feedback, the bars will reset 
+  and you may begin the next trial when you are ready by 
+  pressing down the same keys with the same fingers."
+  
+/ 2 = "  The screen will reset and you may begin the next trial."
+ 
+/ 3 =  "  The screen will reset and you may begin the next trial."
+  
+/ 4 = "  The screen will reset and you may begin the next trial."
+</item>
+
+<text caption6>
+/ items = caption_6
+/ select = values.trialtype_number 
+/ fontstyle = ("Arial", 4%, true, true)
+/ txcolor = black
+/ position = (50%, 90%)
+/ erase = false
+</text>
+
+<item caption_6>
+/ 1 = "  If you do not successfully stop the bars at the horizontal line, 
+  you will see “missed” displayed and the horizontal line will turn red."
+  
+/ 2 = "  If you do not successfully keep your fingers held down on the keys, 
+  “unsuccessful stop” will be displayed above the bars and the 
+  horizontal line will turn red."
+ 
+/ 3 =  "  If you do not successfully complete the trial and lift your 
+  LEFT finger off of the key before feedback has appeared, “unsuccessful stop” 
+  will be displayed above the bars and the horizontal line will turn red."
+  
+/ 4 = "  If you do not successfully complete the trial and lift your 
+  RIGHT finger off of the key before feedback has appeared, “unsuccessful stop” 
+  will be displayed above the bars and the horizontal line will turn red."
+</item>
+
+<text caption7>
+/ items = caption_7
+/ select = values.trialtype_number 
+/ fontstyle = ("Arial", 4%, true, true)
+/ txcolor = black
+/ position = (50%, 90%)
+/ erase = false
+</text>
+
+<item caption_7>
+/ 1 = "  Now it is your turn, you will have 20 tries at these GO trials."
+  
+/ 2 = "  Now it is your turn, you will have 3 tries at STOP BOTH trials."
+ 
+/ 3 =  "  However, if you successfully keep your LEFT finger held 
+  down for the whole trial but do not lift your RIGHT finger in time, 
+  then “successful stop, but missed target” will be displayed."
+  
+/ 4 = "  However, if you successfully keep your RIGHT finger held 
+  down for the whole trial but do not lift your LEFT finger in time, 
+  then “successful stop, but missed target” will be displayed."
+</item>
+
+<text caption8>
+/ items = caption_8
+/ select = values.trialtype_number 
+/ fontstyle = ("Arial", 4%, true, true)
+/ txcolor = black
+/ position = (50%, 90%)
+/ erase = false
+</text>
+
+<item caption_8>
+/ 1 = "  "
+  
+/ 2 = "  "
+ 
+/ 3 =  "  Now it is your turn, you will have 3 tries at STOP LEFT trials."
+  
+/ 4 = "  Now it is your turn, you will have 3 tries at STOP RIGHT trials."
+</item>
+
+
+
+************************************
+
+// Instruction elements
+************************************
+
+<item instructions>
+/ 1 = "INSTRUCTIONS
+
+
+You will now complete the Bar-filling Task which is designed to measure your response time and impulse control
+
+You are going to see two black bars rise on the screen
+
+You will control the bars using the <%parameters.responsekey_left_label%> and <%parameters.responsekey_right_label%> keys
+
+While your fingers are on the keys, the bars will rise. When you lift your fingers off the keys, the bars will stop
+
+Most of the time, you will need to lift both fingers to make the bars stop at a stationary target line
+
+However, sometimes the bars will not reach the target and in that case you need to try and prevent your fingers from lifting off the keys
+
+Do not worry if this does not yet make sense - you will now see 4 short instruction videos to clearly explain what is required. After each video you will have an opportunity to practice what you have seen in the video
+
+Press < SPACEBAR > when you are ready for the first video"
+
+/ 2 = "YOUR TURN
+
+
+It is important for you to be as accurate as you can on GO trials
+
+You will therefore now practice a block of 20 GO trials
+
+If you need to first re-watch the video, press < i >
+
+Otherwise, press < SPACEBAR > when you are ready"
+
+/ 3 = "YOUR TURN
+
+
+You will now practice 3 STOP BOTH trials
+
+If you need to first re-watch the video, press < i >
+
+Otherwise, press < SPACEBAR > when you are ready"
+
+/ 4 = "YOUR TURN
+
+
+You will now practice 3 STOP LEFT trials
+
+If you need to first re-watch the video, press < i >
+
+Otherwise, press < SPACEBAR > when you are ready"
+
+/ 5 = "YOUR TURN
+
+
+You will now practice 3 STOP RIGHT trials
+
+If you need to first re-watch the video, press < i >
+
+Otherwise, press < SPACEBAR > when you are ready"
+
+/ 6 = "REAL THING
+
+
+You will now start the real experiment that is made up of all four trial types that you've just practiced
+
+The STOP trials will be tricky, but just try your best - and try to stay as accurate as you can on GO trials
+
+You will complete 10 experimental blocks, each block lasting approximately 5 minutes
+
+After each block, your average results will be displayed and you will have an opportunity to rest
+
+If you are ready to start, press < SPACEBAR >
+
+Good luck!"
+
+</item>
+<text  instructions>
+/ items = instructions
+/ vjustify = center
+/ hjustify = left
+/ size = (80%, 90%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ select = values.instruction_number
+/ resetinterval = 0
+</text>
+
+<trial instructions>
+/ stimulustimes = [1=clearscreen, instructions]
+/ inputdevice = keyboard
+/ validresponse = (57)
+/ recorddata = false
+</trial>
+
+
+************************************
+// Practice trials and instruction videos
+
+// trials_video, 
+
+<trial go_instruction_video>
+/ ontrialbegin = [
+	values.instruction_number = 2;
+	values.trialtype_number = 1;
+]
+/ stimulustimes = [1 = clearscreen,trials_video,video_titles; 2000 = clearscreen,caption1; 13000 = clearscreen,caption2; 19000 = clearscreen,caption3; 31000 = clearscreen,caption4; 39000 = clearscreen,caption5; 49000 = clearscreen,caption6; 57000 = clearscreen,caption7]
+/ trialduration = 63000
+/ validresponse = ("")
+/ branch = [
+	trial.go_instruction_video_response;
+]
+/ recorddata = false
+</trial>
+
+<trial go_instruction_video_response>
+/ stimulustimes = [1 = instructions]
+/ validresponse = (23, 57)
+/ responseinterrupt = immediate
+/ branch = [
+	if (trial.go_instruction_video_response.response == 23) {
+		trial.go_instruction_video;
+	}
+]
+/ recorddata = false
+</trial>
+
+<trial stopboth_instruction_video>
+/ ontrialbegin = [
+	values.instruction_number = 3;
+	values.trialtype_number = 2;
+]
+/ stimulustimes = [1 = clearscreen,trials_video,video_titles; 4000 = clearscreen,caption1; 10000 = clearscreen,caption2; 16000 = clearscreen,caption3; 22000 = clearscreen,caption4; 34000 = clearscreen,caption5; 38000 = clearscreen,caption6; 46000 = clearscreen,caption7]
+/ trialduration = 53000
+/ validresponse = ("")
+/ branch = [
+	trial.stopboth_instruction_video_response;
+]
+/ recorddata = false
+</trial>
+
+<trial stopboth_instruction_video_response>
+/ stimulustimes = [1 = instructions]
+/ validresponse = (23, 57)
+/ responseinterrupt = immediate
+/ branch = [
+	if (trial.stopboth_instruction_video_response.response == 23) {
+		trial.stopboth_instruction_video;
+	}
+]
+/ recorddata = false
+</trial>
+
+<trial stopleft_instruction_video>
+/ ontrialbegin = [
+	values.instruction_number = 4;
+	values.trialtype_number = 3;
+]
+/ stimulustimes = [1 = clearscreen,trials_video,video_titles; 4000 = clearscreen,caption1; 10000 = clearscreen,caption2; 17000 = clearscreen,caption3; 29000 = clearscreen,caption4; 36000 = clearscreen,caption5; 39000 = clearscreen,caption6; 54000 = clearscreen,caption7; 66000 = clearscreen, caption8]
+/ trialduration = 72000
+/ validresponse = ("")
+/ branch = [
+	trial.stopleft_instruction_video_response;
+]
+/ recorddata = false
+</trial>
+
+<trial stopleft_instruction_video_response>
+/ stimulustimes = [1 = instructions]
+/ validresponse = (23, 57)
+/ responseinterrupt = immediate
+/ branch = [
+	if (trial.stopleft_instruction_video_response.response == 23) {
+		trial.stopleft_instruction_video;
+	}
+]
+/ recorddata = false
+</trial>
+
+<trial stopright_instruction_video>
+/ ontrialbegin = [
+	values.instruction_number = 5;
+	values.trialtype_number = 4;
+]
+/ stimulustimes = [1 = clearscreen,trials_video,video_titles; 4000 = clearscreen,caption1; 10000 = clearscreen,caption2; 18000 = clearscreen,caption3; 30000 = clearscreen,caption4; 37000 = clearscreen,caption5; 40000 = clearscreen,caption6; 52000 = clearscreen,caption7; 64000 = clearscreen, caption8]
+/ trialduration = 70000
+/ validresponse = ("")
+/ branch = [
+	trial.stopright_instruction_video_response;
+]
+/ recorddata = false
+</trial>
+
+<trial stopright_instruction_video_response>
+/ stimulustimes = [1 = instructions]
+/ validresponse = (23, 57)
+/ responseinterrupt = immediate
+/ branch = [
+	if (trial.stopright_instruction_video_response.response == 23) {
+		trial.stopright_instruction_video;
+	}
+]
+/ ontrialend = [
+	values.instruction_number = 6;
+]
+/ recorddata = false
+</trial>
+
+
+************************************
+// 
+<page blockfeedback>
+^^
+END OF BLOCK <%block.experimentalblocks.totalcount%>
+^^
+^^ Your average response time on Go trials is <%expressions.average_go_response%> milliseconds - the target is at 800 ms
+^^
+^^ Your average accuracy for Stop Both trials is <%expressions.stopboth_accuracy%>% 
+^^ Your average accuracy for Stop Left trials is <%expressions.stopleft_accuracy%>% 
+^^ Your average accuracy for Stop Right trials is <%expressions.stopright_accuracy%>% 
+^^
+^^ 
+^^ Press < SPACEBAR > when ready to continue to the next block
+</page>
+
+************************************
+<values>
+/ instruction_number = 1
+/ trialtype_number = 1
+ 
+/ blankbottomrectangle_y = 20%
+
+/ left_key_lifttime = 0
+/ right_key_lifttime = 0
+/ left_key_pressed = false
+/ right_key_pressed = false
+/ liftedbeforebars = false
+/ left_stop_bar_percent = 0
+/ right_stop_bar_percent = 0
+
+/ ssd = "na"
+/ ssd_both = parameters.initial_stop_time_both
+/ ssd_left = parameters.initial_stop_time_left
+/ ssd_right = parameters.initial_stop_time_right
+
+/ goleft_responsetimes = 0
+/ goleft_count = 0
+/ goright_responsetimes = 0
+/ goright_count = 0
+/ stopboth_accuracy = 0
+/ stopleft_accuracy = 0
+/ stopright_accuracy = 0
+
+/ countdown_timer = parameters.countdown_timer
+
+</values>
+
+************************************
+
+<parameters>
+
+/ barwidth = 5%
+/ totalbarheight = 50%
+/ totalriseduration = 1000
+/ targetlocation = totalbarheight * 0.8
+/ randomdelay = rand(400,900)
+
+/ countdown_timer = 20
+
+/ target_tolerance_below = 30
+/ target_tolerance_above = 40
+/ staircase_increment = 25
+
+/ responsekey_left_down = 44
+/ responsekey_left_up = -44
+/ responsekey_right_down = 53
+/ responsekey_right_up = -53
+/ responsekey_left_label = "< Z >"
+/ responsekey_right_label = "< ? >"
+/ max_pretrialduration = 30000
+/ max_trialduration = 1000
+
+/ initial_stop_time_both = 600
+/ initial_stop_time_left = 600
+/ initial_stop_time_right = 600
+
+</parameters>
+
+*************************************
+
+<expressions>
+/ start_y = (100 - values.blankbottomrectangle_y)
+/ end_y = expressions.start_y - parameters.totalbarheight
+
+/ bar_left_stop = expressions.start_y - ((values.left_stop_bar_percent/1000) * parameters.totalbarheight)
+/ bar_right_stop = expressions.start_y - ((values.right_stop_bar_percent/1000) * parameters.totalbarheight)
+
+/ speed = parameters.totalriseduration/(expressions.end_y - expressions.start_y)
+/ location_target = expressions.start_y - parameters.targetlocation
+
+/ average_go_response = ((values.goleft_responsetimes / values.goleft_count) + (values.goright_responsetimes / values.goright_count)) / 2
+/ stopboth_accuracy = (values.stopboth_accuracy / trial.stop_both.count) * 100
+/ stopleft_accuracy = (values.stopleft_accuracy / trial.stop_left.count) * 100
+/ stopright_accuracy = (values.stopright_accuracy / trial.stop_right.count) * 100
+</expressions>
+
+************************************
+<response mainresponse>
+/ mode = correct
+/ timeout = 3000 //parameters.max_trialduration
+</response>
+
+************************************
+// Countdown to begining of block
+
+<text countdown>
+/ items = ("  Countdown (have a small rest): <%values.countdown_timer%>s  ")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = black
+// position = (50%, 50%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+<trial countdown>
+/ ontrialbegin = [
+	if (values.countdown_timer == 0) {
+		; //parameters.countdown_timer;
+	};
+]
+/ stimulustimes = [1 = countdown]
+/ timeout = 1000
+/ branch = [
+	if (values.countdown_timer >= 1) {
+		trial.countdown;
+	}
+]
+/ ontrialend = [
+	values.countdown_timer = values.countdown_timer - 1;	
+]
+/ recorddata = false
+</trial>
+
+************************************
+<trial pretrial_practice>
+/ ontrialbegin = [
+	list.practicedata.nextvalue;
+	values.left_key_pressed = false;
+	values.right_key_pressed = false;
+	values.left_key_lifttime = 0;
+	values.right_key_lifttime = 0;
+	shape.bar_left_rising.skip = false;
+	shape.bar_right_rising.skip = false;
+	shape.blankbar_left.skip = false;
+	shape.blankbar_right.skip = false;
+	shape.target_start.skip = false;
+	values.liftedbeforebars = false;
+]
+/ stimulustimes = [0 = target_start, blankbottomrectangle_feedback, blankbar_left_feedback, blankbar_right_feedback, remove_feedback, blanktoprectangle]
+/ isvalidresponse = [
+	if(trial.pretrial_practice.response == 44) {
+		values.left_key_pressed = true;
+	}
+	if(trial.pretrial_practice.response == 53) {
+		values.right_key_pressed = true;
+	}
+	if(trial.pretrial_practice.response == -44) {
+		values.left_key_pressed = false;
+	}
+	if(trial.pretrial_practice.response == -53) {
+		values.right_key_pressed = false;
+	}
+	return values.left_key_pressed && values.right_key_pressed;
+]
+/ responseinterrupt = immediate
+/ branch = [
+	if (list.practicedata.currentvalue == "na") {
+		trial.go;
+	} else if (list.practicedata.currentvalue == "both") {
+		trial.stop_both;
+	} else if (list.practicedata.currentvalue == "left") {
+		trial.stop_left;
+	} else if (list.practicedata.currentvalue == "right") {
+		trial.stop_right;
+	};
+]
+/ posttrialpause = parameters.randomdelay
+/ recorddata = false		
+</trial>
+
+<trial pretrial_experiment>
+/ ontrialbegin = [
+	list.experimentdata.nextvalue;
+	values.left_key_pressed = false;
+	values.right_key_pressed = false;
+	values.left_key_lifttime = 0;
+	values.right_key_lifttime = 0;
+	shape.bar_left_rising.skip = false;
+	shape.bar_right_rising.skip = false;
+	shape.blankbar_left.skip = false;
+	shape.blankbar_right.skip = false;
+	shape.target_start.skip = false;
+	values.liftedbeforebars = false;
+]
+/ stimulustimes = [0 = background_cover, target_start, blankbottomrectangle_feedback, blankbar_left_feedback, blankbar_right_feedback, remove_feedback, blanktoprectangle]
+/ isvalidresponse = [
+	if(trial.pretrial_experiment.response == 44) {
+		values.left_key_pressed = true;
+	}
+	if(trial.pretrial_experiment.response == 53) {
+		values.right_key_pressed = true;
+	}
+	if(trial.pretrial_experiment.response == -44) {
+		values.left_key_pressed = false;
+	}
+	if(trial.pretrial_experiment.response == -53) {
+		values.right_key_pressed = false;
+	}
+	return values.left_key_pressed && values.right_key_pressed;
+]
+/ responseinterrupt = immediate
+/ branch = [
+	if (list.experimentdata.currentvalue == "na") {
+		trial.go;
+	} else if (list.experimentdata.currentvalue == "both") {
+		trial.stop_both;
+	} else if (list.experimentdata.currentvalue == "left") {
+		trial.stop_left;
+	} else if (list.experimentdata.currentvalue == "right") {
+		trial.stop_right;
+	};
+]
+/ posttrialpause = parameters.randomdelay
+/ recorddata = false		
+</trial>
+
+/////////////////////////////////////////////
+Go trial
+/////////////////////////////////////////////
+
+<trial go>
+/ ontrialbegin = [
+	values.ssd = "na";
+	shape.bar_left_rising.skip = false;
+	shape.bar_right_rising.skip = false;
+	shape.blankbar_left.skip = false;
+	shape.blankbar_right.skip = false;
+	shape.target_fail.skip = false;
+	shape.target_success.skip = false;
+	text.go_fail.skip = false;
+	values.left_key_lifttime = 0;
+	values.right_key_lifttime = 0;
+	values.left_stop_bar_percent = parameters.max_trialduration;
+	values.right_stop_bar_percent = parameters.max_trialduration;
+]
+/ stimulustimes = [0 = target_start, blankbar_left, blankbar_right, bar_left_rising, bar_right_rising, blankbottomrectangle, remove_feedback, blanktoprectangle; 1000=shape.target_success; 1000=shape.target_fail; 1000=text.success; 1000=text.go_fail]
+/ beginresponsetime = -1
+/ response = mainresponse
+/ responseinterrupt = trial
+/ isvalidresponse = [
+	if (trial.go.latency < parameters.max_trialduration) {
+		if(trial.go.response == -44 && values.left_key_lifttime == 0) {
+			//if(trial.go.latency < parameters.randomdelay) {
+				//values.liftedbeforebars= true;
+				//values.left_key_lifttime = -1;
+			//} else {
+			values.left_key_lifttime = trial.go.latency;
+			shape.bar_left_rising.skip = true;
+			shape.blankbar_left.skip = true;		
+			values.left_stop_bar_percent = values.left_key_lifttime;
+			values.goleft_responsetimes = values.goleft_responsetimes + values.left_key_lifttime;
+			values.goleft_count = values.goleft_count + 1;
+			//}
+		};
+		if(trial.go.response == -53 && values.right_key_lifttime == 0) {
+			values.right_key_lifttime = trial.go.latency;
+			shape.bar_right_rising.skip = true;
+			shape.blankbar_right.skip = true;		
+			values.right_stop_bar_percent = values.right_key_lifttime;
+			values.goright_responsetimes = values.goright_responsetimes + values.right_key_lifttime;
+			values.goright_count = values.goright_count + 1;
+		};
+	
+		if (values.left_key_lifttime <= 800 + parameters.target_tolerance_above && values.left_key_lifttime >= 800 - parameters.target_tolerance_below && values.right_key_lifttime <= 800 + parameters.target_tolerance_above && values.right_key_lifttime >= 800 - parameters.target_tolerance_below) {
+			shape.target_fail.skip = true;
+			text.go_fail.skip = true;
+		};
+	};
+	return trial.go.response == -44 || trial.go.response == -53
+]
+/ ontrialend = [
+	shape.bar_left_rising.skip = false;
+	shape.bar_right_rising.skip = false;
+	shape.blankbar_left.skip = false;
+	shape.blankbar_right.skip = false;
+	shape.target_fail.skip = false;
+	shape.target_success.skip = false;
+	text.go_fail.skip = false;
+	values.liftedbeforebars = false;
+	values.countdown_timer == parameters.countdown_timer;
+]
+/ recorddata = true
+</trial>
+
+/////////////////////////////////////////////
+Stop trials
+/////////////////////////////////////////////
+
+<trial stop_both>
+/ ontrialbegin = [
+	if (values.ssd_both < 50) {
+		values.ssd_both = 50;
+	}
+	;
+	values.ssd = values.ssd_both;
+	shape.bar_left_rising.skip = false;
+	shape.bar_right_rising.skip = false;
+	shape.blankbar_left.skip = false;
+	shape.blankbar_right.skip = false;
+	shape.target_start.skip = false;
+	shape.target_success.skip = false;
+	text.success_stop.skip = false;
+	values.left_key_lifttime = 0;
+	values.right_key_lifttime = 0;
+	values.left_stop_bar_percent = values.ssd_both;
+	values.right_stop_bar_percent = values.ssd_both;
+]
+/ stimulustimes = [0 = target_start, blankbar_left, blankbar_right, bar_left_rising, bar_right_rising, blankbottomrectangle, remove_feedback, blanktoprectangle; 1000=shape.target_fail; 1000=shape.target_success; 1000=text.stop_fail; 1000=text.success_stop; ]
+/ beginresponsetime = -1
+/ response = mainresponse
+/ responseinterrupt = trial
+/ isvalidresponse = [
+	if (trial.stop_both.latency < parameters.max_trialduration) {
+		if (trial.stop_both.response == -44 && values.left_key_lifttime == 0) {
+			//if(trial.go.latency < parameters.randomdelay) {
+				//values.liftedbeforebars= true;
+				//values.left_key_lifttime = -1;
+			//} else {
+			values.left_key_lifttime = trial.stop_both.latency;
+			
+			if (trial.stop_both.latency < values.ssd_both) {
+				shape.blankbar_left.skip = true;
+				shape.bar_left_rising.skip = true;
+				shape.target_start.skip = true;
+				values.left_stop_bar_percent = values.left_key_lifttime;
+			};
+			shape.target_success.skip = true;
+			text.success_stop.skip = true;
+			if (values.right_key_lifttime == 0) {
+				values.ssd_both = values.ssd_both - parameters.staircase_increment;
+			};
+		};
+		if (trial.stop_both.response == -53 && values.right_key_lifttime == 0) {
+			values.right_key_lifttime = trial.stop_both.latency;
+			if (trial.stop_both.latency < values.ssd_both) {
+				shape.blankbar_right.skip = true;
+				shape.bar_right_rising.skip = true;
+				shape.target_start.skip = true;
+				values.right_stop_bar_percent = values.right_key_lifttime;
+			};
+			shape.target_success.skip = true;
+			text.success_stop.skip = true;
+			if (values.left_key_lifttime == 0) {
+				values.ssd_both = values.ssd_both - parameters.staircase_increment;
+			};
+		};
+	};
+]
+/ ontrialend = [
+	if (values.left_key_lifttime == 0 && values.right_key_lifttime == 0) {
+		values.ssd_both = values.ssd_both + parameters.staircase_increment;
+		if (block.practiceblock.totalcount == 1) {
+			values.stopboth_accuracy = values.stopboth_accuracy + 1;
+		};
+	};	
+	shape.bar_left_rising.skip = false;
+	shape.bar_right_rising.skip = false;
+	shape.blankbar_left.skip = false;
+	shape.blankbar_right.skip = false;
+	shape.target_start.skip = false;
+	shape.target_success.skip = false;
+	text.success_stop.skip = false;
+	values.countdown_timer == parameters.countdown_timer;
+]
+/ recorddata = true
+</trial>
+
+<trial stop_left>
+/ ontrialbegin = [
+	if (values.ssd_left < 50) {
+		values.ssd_left = 50;
+	}
+	;
+	values.ssd = values.ssd_left;
+	values.left_key_lifttime = 0;
+	values.right_key_lifttime = 0;
+	values.left_stop_bar_percent = values.ssd_left;
+	values.right_stop_bar_percent = parameters.max_trialduration;
+]
+/ stimulustimes = [0 = target_start, blankbar_left, blankbar_right, bar_left_rising, bar_right_rising, blankbottomrectangle, remove_feedback, blanktoprectangle; 1000=shape.target_fail_bothfingers; 1000=shape.target_success; 1000=shape.target_fail; 1000=text.stop_error; 1000=text.stop_fail; 1000=text.success; 1000=success_stop_missed_target]
+/ beginresponsetime = -1
+/ response = mainresponse
+/ responseinterrupt = trial
+/ isvalidresponse = [
+	if (trial.stop_left.latency < parameters.max_trialduration) {
+		if (trial.stop_left.response == -44 && values.left_key_lifttime == 0) {
+			//if(trial.go.latency < parameters.randomdelay) {
+				//values.liftedbeforebars= true;
+				//values.left_key_lifttime = -1;
+			//} else {
+			values.left_key_lifttime = trial.stop_left.latency;
+			values.ssd_left = values.ssd_left - parameters.staircase_increment;
+			shape.target_success.skip = true;
+			text.success_stop_missed_target.skip = true;
+			text.success.skip = true;
+			if (trial.stop_left.latency < values.ssd_left) {
+				shape.blankbar_left.skip = true;
+				shape.bar_left_rising.skip = true;
+				shape.target_start.skip = true;
+				values.left_stop_bar_percent = values.left_key_lifttime;
+			};
+		};
+		if (trial.stop_left.response == -53 && values.right_key_lifttime == 0) {
+			values.right_key_lifttime = trial.stop_left.latency;
+			shape.blankbar_right.skip = true;
+			shape.bar_right_rising.skip = true;
+			shape.target_start.skip = true;
+			values.right_stop_bar_percent = values.right_key_lifttime;
+			if (values.right_key_lifttime <= 800 + parameters.target_tolerance_above && values.right_key_lifttime >= 800 - parameters.target_tolerance_below) {
+				shape.target_fail.skip = true;
+				text.success_stop_missed_target.skip = true;
+			};
+		};
+		
+		
+	};
+]
+// branch = [ // can't incorporate this logic above...
+	if (values.left_key_lifttime != 0 && values.right_key_lifttime == 0) {
+		trial.feedback_stop_error;
+	};
+]
+/ ontrialend = [
+	if (values.left_key_lifttime == 0 && values.right_key_lifttime == 0) { 
+		values.ssd_left = values.ssd_left - parameters.staircase_increment;
+	};
+	if (values.left_key_lifttime == 0 && values.right_key_lifttime <= 800 + parameters.target_tolerance_above && values.right_key_lifttime >= 800 - parameters.target_tolerance_below) {
+		values.ssd_left = values.ssd_left + parameters.staircase_increment;
+		if (block.practiceblock.totalcount == 1) {
+			values.stopleft_accuracy = values.stopleft_accuracy + 1;
+		};
+	};
+	if (values.left_key_lifttime == 0 && values.right_key_lifttime > 0 && (values.right_key_lifttime > 800 + parameters.target_tolerance_above || values.right_key_lifttime < 800 - parameters.target_tolerance_below)) {
+		values.ssd_left = values.ssd_left + parameters.staircase_increment;
+		if (block.practiceblock.totalcount == 1) {
+			values.stopleft_accuracy = values.stopleft_accuracy + 1;
+		};
+	};
+	shape.bar_left_rising.skip = false;
+	shape.bar_right_rising.skip = false;
+	shape.blankbar_left.skip = false;
+	shape.blankbar_right.skip = false;
+	shape.target_start.skip = false;
+	shape.target_fail.skip = false;
+	shape.target_success.skip = false;
+	text.success_stop_missed_target.skip = false;
+	text.success.skip = false;
+	text.stop_fail.skip = false;
+	values.countdown_timer == parameters.countdown_timer;
+]
+/ recorddata = true
+</trial>
+
+<trial stop_right>
+/ ontrialbegin = [
+	if (values.ssd_right < 50) {
+		values.ssd_right = 50;
+	}
+	;
+	values.ssd = values.ssd_right;
+	values.left_key_lifttime = 0;
+	values.right_key_lifttime = 0;
+	values.left_stop_bar_percent = parameters.max_trialduration;
+	values.right_stop_bar_percent = values.ssd_right; 
+]
+/ stimulustimes = [0 = target_start, blankbar_left, blankbar_right, bar_left_rising, bar_right_rising, blankbottomrectangle, remove_feedback, blanktoprectangle; 1000=shape.target_fail_bothfingers; 1000=shape.target_success; 1000=shape.target_fail; 1000=text.stop_error; 1000=text.stop_fail; 1000=text.success; 1000=success_stop_missed_target]
+/ beginresponsetime = -1
+/ response = mainresponse
+/ responseinterrupt = trial
+/ isvalidresponse = [
+	if (trial.stop_right.latency < parameters.max_trialduration) {
+		if (trial.stop_right.response == -44 && values.left_key_lifttime == 0) {
+			//if(trial.go.latency < parameters.randomdelay) {
+				//values.liftedbeforebars= true;
+				//values.left_key_lifttime = -1;
+			//} else {
+			values.left_key_lifttime = trial.stop_right.latency;
+			shape.blankbar_left.skip = true;
+			shape.bar_left_rising.skip = true;
+			shape.target_start.skip = true;
+			values.left_stop_bar_percent = values.left_key_lifttime;
+			if (values.left_key_lifttime <= 800 + parameters.target_tolerance_above && values.left_key_lifttime >= 800 - parameters.target_tolerance_below) {
+				shape.target_fail.skip = true;
+				text.success_stop_missed_target.skip = true;
+			};
+			
+		};
+		if (trial.stop_right.response == -53 && values.right_key_lifttime == 0) {
+			values.right_key_lifttime = trial.stop_right.latency;
+			values.ssd_right = values.ssd_right - parameters.staircase_increment;
+			shape.target_success.skip = true;
+			text.success_stop_missed_target.skip = true;
+			text.success.skip = true;
+			if (trial.stop_right.latency < values.ssd_right) {
+				shape.blankbar_right.skip = true;
+				shape.bar_right_rising.skip = true;
+				shape.target_start.skip = true;
+				values.right_stop_bar_percent = values.right_key_lifttime;
+			};
+		};
+		
+		
+	};
+]
+// branch = [ // can't incorporate this logic above...
+	if (values.left_key_lifttime != 0 && values.right_key_lifttime == 0) {
+		trial.feedback_stop_error;
+	};
+]
+/ ontrialend = [
+	if (values.left_key_lifttime == 0 && values.right_key_lifttime == 0) { 
+		values.ssd_right = values.ssd_right - parameters.staircase_increment;
+	};
+	if (values.right_key_lifttime == 0 && values.left_key_lifttime <= 800 + parameters.target_tolerance_above && values.left_key_lifttime >= 800 - parameters.target_tolerance_below) {
+		values.ssd_right = values.ssd_right + parameters.staircase_increment;
+		if (block.practiceblock.totalcount == 1) {
+			values.stopright_accuracy = values.stopright_accuracy + 1;
+		};
+	};
+	if (values.right_key_lifttime == 0 && values.left_key_lifttime > 0 && (values.left_key_lifttime > 800 + parameters.target_tolerance_above || values.left_key_lifttime < 800 - parameters.target_tolerance_below)) {
+		values.ssd_right = values.ssd_right + parameters.staircase_increment;
+		if (block.practiceblock.totalcount == 1) {
+			values.stopright_accuracy = values.stopright_accuracy + 1;
+		};
+	};
+	shape.bar_left_rising.skip = false;
+	shape.bar_right_rising.skip = false;
+	shape.blankbar_left.skip = false;
+	shape.blankbar_right.skip = false;
+	shape.target_start.skip = false;
+	shape.target_fail.skip = false;
+	shape.target_success.skip = false;
+	text.success_stop_missed_target.skip = false;
+	text.success.skip = false;
+	text.stop_fail.skip = false;
+	values.countdown_timer == parameters.countdown_timer;
+]
+/ recorddata = true
+</trial>
+
+
+/////////////////////////////////////////////
+Feedback
+/////////////////////////////////////////////
+
+<trial go_feedback_success>
+/ response = noresponse
+/ stimulusframes = [1 = target_success, blankbar_left_feedback, blankbar_right_feedback, bar_left_stopped_feedback, bar_right_stopped_feedback, blankbottomrectangle_feedback, success]
+/ trialduration = 2000
+/ recorddata = false
+/ ontrialend = [
+	shape.bar_left_rising.skip = false;
+	shape.bar_right_rising.skip = false;
+	values.liftedbeforebars = false;
+]
+</trial>
+
+<trial go_feedback_fail>
+/ response = noresponse
+/ stimulusframes = [1 = target_fail, blankbar_left_feedback, blankbar_right_feedback, bar_left_stopped_feedback, bar_right_stopped_feedback, blankbottomrectangle_feedback, go_fail]
+/ trialduration = 2000
+/ recorddata = false
+</trial>
+
+<trial stopboth_feedback_success>
+/ response = noresponse
+/ stimulusframes = [1 = target_success, blankbar_left_feedback, blankbar_right_feedback, bar_left_stopped_feedback, bar_right_stopped_feedback, blankbottomrectangle_feedback, success_stop]
+/ trialduration = 2000
+/ recorddata = false
+</trial>
+
+<trial stop_feedback_fail>
+/ response = noresponse
+/ stimulusframes = [1 = target_fail, blankbar_left_feedback, blankbar_right_feedback, bar_left_stopped_feedback, bar_right_stopped_feedback, blankbottomrectangle_feedback, stop_fail]
+/ trialduration = 2000
+/ recorddata = false
+</trial>
+
+<trial stop_feedback_success_misstarget>
+/ response = noresponse
+/ stimulusframes = [1 = target_fail, blankbar_left_feedback, blankbar_right_feedback, bar_left_stopped_feedback, bar_right_stopped_feedback, blankbottomrectangle_feedback, success_stop_missed_target]
+/ trialduration = 2000
+/ recorddata = false
+</trial>
+
+<trial feedback_stop_error>
+/ response = noresponse
+/ stimulusframes = [1 = target_fail, blankbar_left_feedback, blankbar_right_feedback, bar_left_stopped_feedback, bar_right_stopped_feedback, blankbottomrectangle_feedback, stop_error]
+/ trialduration = 2000
+/ recorddata = false
+</trial>
+
+********************
+raw data
+********************
+<data>
+/ columns = (build, computer.platform, date,time,subject, blockcode, blocknum, trial.pretrial_experiment.count, list.experimentdata.currentvalue, values.ssd, values.left_key_lifttime, values.right_key_lifttime)
+</data>
+
+************************************
+<trial blanktrial> // to fix Inquisit bug of instruction screen text at beginning corrupting all other text afterwards!!!!!
+/ timeout = 1
+/ recorddata = false
+</trial>
+
+<block practiceblock>
+/ trials = [1=instructions; 2=blanktrial; 3=go_instruction_video; 4-23=pretrial_practice; 24=stopboth_instruction_video; 25-27=pretrial_practice; 28=trial.stopleft_instruction_video; 29-31=pretrial_practice; 32=stopright_instruction_video; 33-35=pretrial_practice; 36=instructions] 
+/ onblockend = [
+	values.ssd_both = parameters.initial_stop_time_both;
+	values.ssd_left = parameters.initial_stop_time_left;
+	values.ssd_right = parameters.initial_stop_time_right;
+	values.goleft_responsetimes = 0;
+	values.goleft_count = 0;
+	values.goright_responsetimes = 0;
+	values.goright_count = 0;
+]
+</block>
+
+<block experimentalblocks>
+/ trials = [1 = countdown; 2-41 = pretrial_experiment]
+/ postinstructions = (blockfeedback)
+/ onblockend = [
+	values.countdown_timer = parameters.countdown_timer;
+]
+</block>
+
+************************************
+<expt>
+//preinstructions = (intro)
+/ blocks = [1=practiceblock; 2-11=experimentalblocks] // 
+</expt>

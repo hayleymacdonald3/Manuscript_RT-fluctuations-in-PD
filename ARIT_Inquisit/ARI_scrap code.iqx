@@ -1,0 +1,211 @@
+﻿// Scrap code that can't comment out(?!?!?!?!) in main ARI code
+
+**************************
+Trial flow before tried stop element - worked to some extent
+**************************
+<trial go>
+/ pretrialpause = parameters.randomdelay
+/ ontrialbegin = [
+	values.first_key =0;
+	values.first_key_latency = 0;
+	
+	values.left_key_lift = 0;
+	values.left_key_lifttime = 0;
+	values.right_key_lift = 0;
+	values.right_key_lifttime = 0;
+	values.correctkeys_one = "-44";
+	values.correctkeys_two = "-53";
+]
+/ stimulusframes = [1 = target_start, blankbar_left, blankbar_right, bar_left, bar_right, blankbottomrectangle, remove_feedback]
+/ validresponse = (-44, -53)
+/ isvalidresponse = [
+	if (values.first_key == 0) {
+		values.first_key = trial.go.response;
+		values.first_key_latency = trial.go.latency;
+		if (trial.go.response == -44) {			
+			values.left_key_lift = trial.go.response;
+			values.left_key_lifttime = trial.go.latency;
+			values.correctkeys_one = "";
+		} else if (trial.go.response == -53) {
+			values.right_key_lift = trial.go.response;
+			values.right_key_lifttime = trial.go.latency;
+			values.correctkeys_two = "";
+		}
+		;
+		false;
+	}
+	values.first_key != 0
+]
+/ branch = [/zzzzzz
+	if (trial.go.response == -44) {
+		trial.go_right_continuing;
+	} else if (trial.go.response == -53) {
+		trial.go_left_continuing;
+	}
+	;
+]	
+/ responseinterrupt = immediate					
+/ timeout = parameters.max_trialduration
+
+/ recorddata = true
+</trial>
+
+
+<trial go_right_continuing>
+/ ontrialbegin = [
+	values.second_key = 0;
+	values.left_key_lift = trial.go.response;
+	values.left_key_lifttime = trial.go.latency;
+	values.first_key_latency = trial.go.latency;
+	values.first_key = trial.go.response;
+]
+/ stimulusframes = [1 = target_start, blankbar_left, blankbar_right, bar_left_stopped, bar_right_continuing, blankbottomrectangle, remove_feedback]
+/ validresponse = (-53)
+/ isvalidresponse = [
+	if (values.second_key == 0 && (trial.go_right_continuing.latency + values.first_key_latency <= 1000)) {
+		values.second_key = trial.go_right_continuing.response;
+		values.right_key_lift = trial.go_right_continuing.response;
+		values.right_key_lifttime = trial.go_right_continuing.latency + values.first_key_latency;
+	} else if (trial.go_right_continuing.latency + values.first_key_latency > 1000) {
+		values.right_key_lifttime = 1000;
+	}
+	
+	false;
+	values.first_key != 0 && values.second_key != 0
+]
+/ iscorrectresponse = [
+	(values.left_key_lifttime <= 800 + parameters.target_tolerance && values.left_key_lifttime >= 800 - parameters.target_tolerance && values.right_key_lifttime <= 800 + parameters.target_tolerance && values.right_key_lifttime >= 800 - parameters.target_tolerance)
+]
+/ branch = [
+	if (values.left_key_lifttime <= 800 + parameters.target_tolerance && values.left_key_lifttime >= 800 - parameters.target_tolerance && values.right_key_lifttime <= 800 + parameters.target_tolerance && values.right_key_lifttime >= 800 - parameters.target_tolerance) {
+		trial.feedback_success;
+	} else {
+		trial.feedback_fail;
+	}
+]
+/ responseinterrupt = immediate	
+/ timeout = parameters.max_trialduration - values.first_key_latency
+/ recorddata = true
+</trial>
+
+
+
+
+**************************
+
+/ branch = [
+	if (values.left_key_lifttime <= 800 + parameters.target_tolerance && values.left_key_lifttime >= 800 - parameters.target_tolerance && values.right_key_lifttime <= 800 + parameters.target_tolerance && values.right_key_lifttime >= 800 - parameters.target_tolerance) {
+		trial.feedback_success;
+	} else {
+		trial.feedback_fail;
+	}
+]
+
+/ selectionmode = sequence - in list element
+
+<list practicedata>
+/ items = [item.practicedata_order]
+</list>
+
+<item practicedata_2>
+/1 = "ix"
+/2 = "test2"
+/3 = "test3"
+</item>
+
+<list practicedata>
+/ items = [item.practicedata_2]
+/ select = sequence
+</list>
+
+<text trialorder>
+/ items = [list.practicedata]
+</text>
+
+
+
+/ items = ("balloon.jpg", "poppedballon.jpg")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = (0, 0, 255)
+/ vposition = 43
+/ select = sequence
+
+<block practice>
+/ trials = [1-3 = list.practicedata]
+</block>
+
+<list practicedata> ****** doesn't work...
+/ items = practicedata_order
+/ selectionmode = sequence
+</list>
+
+<picture gotrialsimage>
+/ items = ("balloon.jpg")
+/ valign = top
+/ halign = center
+/ erase = false
+</picture>
+
+<picture stoptrialsimage>
+/ items = ("poppedballoon.jpg")
+/ valign = top
+/ halign = center
+/ erase = false
+</picture>
+
+
+<text trialnumber>
+/ items = ("Number of trials: <%trial.init.count%>          ")
+/ position = (60%, 76%)
+/ valign = bottom
+/ halign = left
+/ erase = false
+</text>
+
+<text test_text>
+/ items = ("<%list.practicedata.currentvalue%>            ")
+/ position = (60%, 76%)
+/ valign = bottom
+/ halign = right
+/ erase = false
+</text>
+
+**************************
+Example code
+**************************
+// registering multiple key presses per trial  
+https://www.millisecond.com/forums/Topic18181.aspx
+
+
+
+**************************
+To work out
+**************************
+
+why this code doesn't work
+/ validresponse = (parameters.responsekey_left_down, parameters.responsekey_right_down)
+but this does
+/ validresponse = (44, 53)
+
+how to format trial data/practice data in matlab so that outputs in list compatible format for </include>
+
+why feedback text disappears so quickly when I set to erase - doesn't last until end of trial - current fix is to not erase, but put blank feedback on top for non feedback trials
+
+**************************
+To fix
+**************************
+
+//create feedback for error if bars lifted before pretrial delay - not now
+
+**************************
+To do
+**************************
+
+screens after blocks end to show feedback/progress
+
+set countdown and 'press space to begin' to begin each block
+
+set instruction screens - Ali to send text
+
+
+

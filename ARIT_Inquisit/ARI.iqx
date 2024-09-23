@@ -1,0 +1,1397 @@
+﻿
+// Write txt file from .mat - needs R2019 to use writecell
+// load practiceDataArray.mat
+// practiceDataInquisit = practiceArray(:,2)
+// writecell(practiceDataInquisit,'practiceDataInquisit_tab.txt','Delimiter','tab')
+
+// load trialDataArray.mat
+// trialDataInquisit = textArray(:,2)
+// writecell(trialDataInquisit,'trialDataInquisit_tab.txt','Delimiter','tab')
+
+<include practicedata_index>
+/ file = "practiceDataInquisit_tab.txt"
+</include>
+
+************************************
+<shape blankbottomrectangle>
+/ shape = rectangle
+/ color = white
+/ width = 100%
+/ height = values.blankbottomrectangle_y
+/ valign = top
+/ halign = center
+/ position = (50%, 80%)
+/ animation = path(parameters.totalriseduration, 1, 50%, expressions.start_y, 50%, expressions.start_y)
+/ erase = false
+</shape>
+
+<shape blankbar_left>
+/ shape = rectangle
+/ color = gray
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ animation = path(parameters.totalriseduration, 1, 45%, expressions.end_y, 45%, expressions.end_y)
+/ erase = false
+</shape>
+
+<shape blankbar_right>
+/ shape = rectangle
+/ color = gray
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ animation = path(parameters.totalriseduration, 1, 55%, expressions.end_y, 55%, expressions.end_y)
+/ erase = false
+</shape>
+
+<shape target_start>
+/ shape = rectangle
+/ color = gray
+/ width = 25%
+/ height = 1%
+/ valign = center
+/ halign = center
+/ position = (50%, expressions.location_target)
+/ animation = path(parameters.totalriseduration, 1, 50%, expressions.location_target, 50%, expressions.location_target)
+/ erase = false
+</shape>
+
+<shape target_success>
+/ shape = rectangle
+/ color = green
+/ width = 25%
+/ height = 1%
+/ valign = center
+/ halign = center
+/ position = (50%, expressions.location_target)
+/ animation = path(parameters.totalriseduration, 1, 50%, expressions.location_target, 50%, expressions.location_target)
+/ erase = true(green)
+</shape>
+
+<shape target_fail>
+/ shape = rectangle
+/ color = red
+/ width = 25%
+/ height = 1%
+/ valign = center
+/ halign = center
+/ position = (50%, expressions.location_target)
+/ animation = path(parameters.totalriseduration, 1, 50%, expressions.location_target, 50%, expressions.location_target)
+/ erase = true(red)
+</shape>
+
+<shape bar_left>
+/ shape = rectangle
+/ color = black
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ animation = path(values.left_stop_bar_percent, 1, 45%, expressions.start_y, 45%, expressions.bar_left_stop)
+/ erase = false
+</shape>
+
+<shape bar_left_stopped>
+/ shape = rectangle
+/ color = black
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ animation = path(parameters.totalriseduration, 1, 45%, expressions.bar_left_stop, 45%, expressions.bar_left_stop)
+/ erase = false
+</shape>
+
+<shape bar_left_continuing>
+/ shape = rectangle
+/ color = black
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ animation = path(expressions.bar_continuing_speedleft, 1, 45%, expressions.bar_right_stop, 45%, expressions.bar_left_stop)
+/ erase = false
+</shape>
+
+<shape bar_left_continuing_stopboth>
+/ shape = rectangle
+/ color = black
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ animation = path(expressions.bar_continuing_speed_stopboth, 1, 45%, expressions.bar_right_stop, 45%, expressions.bar_left_stop)
+/ erase = false
+</shape>
+
+<shape bar_left_continuing_stopleft>
+/ shape = rectangle
+/ color = black
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ animation = path(expressions.bar_continuing_speed_stopleft, 1, 45%, expressions.bar_right_stop, 45%, expressions.bar_left_stop)
+/ erase = false
+</shape>
+
+<shape bar_right>
+/ shape = rectangle
+/ color = black
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ animation = path(values.right_stop_bar_percent, 1, 55%, expressions.start_y, 55%, expressions.bar_right_stop)
+/ erase = false
+</shape>
+
+<shape bar_right_stopped>
+/ shape = rectangle
+/ color = black
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ animation = path(parameters.totalriseduration, 1, 55%, expressions.bar_right_stop, 55%, expressions.bar_right_stop)
+/ erase = false
+</shape>
+
+<shape bar_right_continuing>
+/ shape = rectangle
+/ color = black
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ animation = path(expressions.bar_continuing_speedright, 1, 55%, expressions.bar_left_stop, 55%, expressions.bar_right_stop)
+/ erase = false
+</shape>
+
+<shape bar_right_continuing_stopboth>
+/ shape = rectangle
+/ color = black
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ animation = path(expressions.bar_continuing_speed_stopboth, 1, 55%, expressions.bar_left_stop, 55%, expressions.bar_right_stop)
+/ erase = false
+</shape>
+
+<shape bar_right_continuing_stopright>
+/ shape = rectangle
+/ color = black
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ animation = path(expressions.bar_continuing_speed_stopright, 1, 55%, expressions.bar_left_stop, 55%, expressions.bar_right_stop)
+/ erase = false
+</shape>
+
+
+<text success>
+/ items = ("Success")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = green
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+<text success_stop>
+/ items = ("Successful stop")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = green
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+<text go_fail>
+/ items = ("Missed target")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = red
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+<text stop_fail>
+/ items = ("Unsuccessful stop")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = red
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+<text stop_error>
+/ items = ("Stopping error - incorrect side")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = red
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+
+<text success_stop_missed_target>
+/ items = ("Successful stop but missed target")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = red
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+
+
+<text remove_feedback>
+/ items = ("                                                                         ")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = white
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+************************************
+<values>
+/ trialnumber = 1
+
+/ blankbottomrectangle_y = 20%
+
+/ first_key = 0
+/ first_key_latency = 0
+/ second_key = 0
+/ second_key_latency = 0
+/ first_key_go = 0
+/ first_key_go_latency = 0
+/ second_key_go = 0
+/ correctkeys_one = ""
+/ correctkeys_two = ""
+
+/ left_key_lift = 0
+/ left_key_lifttime = 0
+/ right_key_lift = 0
+/ right_key_lifttime = 0
+/ left_stop_bar_percent = 0
+/ right_stop_bar_percent = 0
+
+/ right_also_lifted = 0
+/ left_also_lifted = 0
+/ both_keys_lifted = 0
+
+/ ssd = "na"
+/ ssd_both = parameters.initial_stop_time_both
+/ ssd_left = parameters.initial_stop_time_left
+/ ssd_right = parameters.initial_stop_time_right
+
+/ partialtrial_left = 0
+/ partialtrial_right = 0
+</values>
+
+
+************************************
+<parameters>
+
+/ barwidth = 5%
+/ totalbarheight = 50%
+/ totalriseduration = 1000
+/ targetlocation = totalbarheight * 0.8
+/ randomdelay = rand(400,900)
+
+/ target_tolerance = 30
+/ staircase_increment = 25
+
+/ iti = 1000
+/ totaltrialnumber = 3
+
+/ responsekey_left_down = 44
+/ responsekey_left_up = -44
+/ responsekey_right_down = 53
+/ responsekey_right_up = -53
+/ responsekey_left_label = "<Z>"
+/ responsekey_right_label = "</>"
+/ max_pretrialduration = 30000
+/ max_trialduration = 1000
+
+/ initial_stop_time_both = 600
+/ initial_stop_time_left = 600
+/ initial_stop_time_right = 600
+
+
+/ nr_steps_destinationhole = 88
+
+</parameters>
+
+*************************************
+<expressions>
+/ start_y = (100 - values.blankbottomrectangle_y)
+/ end_y = expressions.start_y - parameters.totalbarheight
+
+/ bar_left_stop = expressions.start_y - ((values.left_stop_bar_percent/1000) * parameters.totalbarheight)
+/ bar_right_stop = expressions.start_y - ((values.right_stop_bar_percent/1000) * parameters.totalbarheight)
+
+/ bar_continuing_speedleft = values.left_stop_bar_percent - values.first_key_latency
+/ bar_continuing_speedright = values.right_stop_bar_percent - values.first_key_latency
+/ bar_continuing_speed_stopboth = values.ssd_both - values.first_key_latency
+/ bar_continuing_speed_stopleft = values.ssd_left - values.first_key_latency
+/ bar_continuing_speed_stopright = values.ssd_right - values.first_key_latency
+
+/ speed = parameters.totalriseduration/(expressions.end_y - expressions.start_y)
+/ location_target = expressions.start_y - parameters.targetlocation
+</expressions>
+
+************************************
+<trial init>
+/ ontrialbegin = [
+	list.practicedata.nextvalue;
+	values.first_key = 0;
+	values.first_key_latency = 0;
+	values.second_key = 0;
+	values.second_key_latency = 0;
+	values.correctkeys_one = "44";
+	values.correctkeys_two = "53";
+]
+/ stimulustimes = [1 = blankbottomrectangle, target_start, blankbar_left, blankbar_right, remove_feedback]
+/ inputdevice = keyboard
+/ validresponse = (44, 53)
+/ isvalidresponse = [
+	if (values.first_key == 0) {
+		values.first_key = trial.init.response;
+		values.first_key_latency = trial.init.latency;
+		if (contains(values.correctkeys_one, trial.init.response)) {
+			values.correctkeys_one = "";
+		} else if (contains(values.correctkeys_two, trial.init.response)) {
+			values.correctkeys_two = "";
+		}
+		;
+		false;
+	}
+	if (values.first_key != 0 && trial.init.latency > values.first_key_latency && (contains(values.correctkeys_one, trial.init.response) || contains(values.correctkeys_two, trial.init.response))) {
+		values.second_key = trial.init.response;
+		values.second_key_latency = trial.init.latency;
+	} else {
+			trial.init;
+	}
+		false;
+	
+	values.first_key != 0 && values.second_key != 0
+]
+/ responseinterrupt = immediate					
+/ timeout = parameters.max_pretrialduration
+/ branch = [
+	if (list.practicedata.currentvalue == "na") {
+		trial.go;
+	} else if (list.practicedata.currentvalue == "both") {
+		trial.stop_both;
+	} else if (list.practicedata.currentvalue == "left") {
+		trial.stop_left;
+	} else if (list.practicedata.currentvalue == "right") {
+		trial.stop_right
+	}
+	;
+]
+/ recorddata = false
+</trial>
+
+/////////////////////////////////////////////
+Go trials
+/////////////////////////////////////////////
+
+<trial go>
+/ pretrialpause = parameters.randomdelay
+/ ontrialbegin = [
+	values.ssd = "na";
+	values.partialtrial_left = 0;
+	values.partialtrial_right = 0;
+	values.first_key =0;
+	values.first_key_latency = 0;
+	
+	values.left_key_lift = 0;
+	values.left_key_lifttime = 0;
+	values.right_key_lift = 0;
+	values.right_key_lifttime = 0;
+	values.left_stop_bar_percent = parameters.max_trialduration;
+	values.right_stop_bar_percent = parameters.max_trialduration;
+	values.correctkeys_one = "-44";
+	values.correctkeys_two = "-53";
+	
+	values.right_also_lifted = 0;
+	values.left_also_lifted = 0;
+	values.both_keys_lifted = 0;
+]
+/ stimulusframes = [1 = target_start, blankbar_left, blankbar_right, bar_left, bar_right, blankbottomrectangle, remove_feedback]
+/ inputdevice = keyboard
+/ validresponse = (-44, -53)
+/ isvalidresponse = [
+	if (values.first_key == 0) {
+		values.first_key = trial.go.response;
+		values.first_key_latency = trial.go.latency;
+		if (trial.go.response == -44) {			
+			values.left_key_lift = trial.go.response;
+			values.left_key_lifttime = trial.go.latency;
+			values.left_stop_bar_percent = values.left_key_lifttime;
+			values.correctkeys_one = "";
+		} else if (trial.go.response == -53) {
+			values.right_key_lift = trial.go.response;
+			values.right_key_lifttime = trial.go.latency;
+			values.right_stop_bar_percent = values.right_key_lifttime;
+			values.correctkeys_two = "";
+		}
+		;
+	} 	
+	values.first_key != 0
+	;
+]
+/ branch = [
+	if (trial.go.response == -44) {
+		trial.go_right_continuing;
+	} else if (trial.go.response == -53) {
+		trial.go_left_continuing;
+	} 
+	;
+]
+/ branch = [
+	if (values.left_key_lift == 0 && values.right_key_lift == 0) {
+		trial.full_bar;
+	}
+	;
+]
+/ responseinterrupt = immediate
+/ timeout = parameters.max_trialduration + parameters.randomdelay
+/ ontrialend = [
+	if (values.left_key_lift != 0 && values.both_keys_lifted == 1) {
+		values.right_also_lifted = 1;
+	} else if (values.right_key_lift != 0 && values.both_keys_lifted == 1) {
+		values.left_also_lifted = 1;
+	}
+]
+/ recorddata = false
+</trial>
+
+<trial go_right_continuing>
+/ ontrialbegin = [
+	values.second_key = 0;
+	values.right_key_lift = 0;
+	values.right_key_lifttime = 0;
+	if (values.partialtrial_left == 0 && values.partialtrial_right == 0) {
+		values.left_key_lift = trial.go.response;
+		values.left_key_lifttime = trial.go.latency;	
+		values.first_key_latency = trial.go.latency;
+		values.first_key = trial.go.response;
+		values.right_stop_bar_percent = parameters.max_trialduration;
+	} else if (values.partialtrial_left == 1) {
+		values.left_key_lift = trial.stop_left.response;
+		values.left_key_lifttime = trial.stop_left.latency;	
+		values.first_key_latency = trial.stop_left.latency;
+		values.first_key = trial.stop_left.response;
+		values.right_stop_bar_percent = parameters.max_trialduration;
+	} else if (values.partialtrial_right == 1) {
+		values.left_key_lift = trial.stop_right.response;
+		values.left_key_lifttime = trial.stop_right.latency;	
+		values.first_key_latency = trial.stop_right.latency;
+		values.first_key = trial.stop_right.response;
+		values.right_stop_bar_percent = values.ssd_right;
+	}
+	;	
+]
+/ stimulusframes = [1 = target_start, blankbar_left, blankbar_right, bar_left_stopped, bar_right_continuing, blankbottomrectangle, remove_feedback]
+/ inputdevice = keyboard
+/ validresponse = (-53)
+/ isvalidresponse = [
+	if (values.second_key == 0) {
+		values.second_key = trial.go_right_continuing.response;
+		values.right_key_lift = trial.go_right_continuing.response;
+		values.right_key_lifttime = trial.go_right_continuing.latency + values.first_key_latency;
+		values.right_stop_bar_percent = values.right_key_lifttime;
+	} 	
+	false;
+	values.first_key != 0 && values.second_key != 0
+]
+/ branch = [
+	if (values.partialtrial_left == 0 && values.partialtrial_right == 0) {
+		if (values.right_key_lift == 0) {
+			trial.full_bar;
+		} else if (values.left_key_lifttime <= 800 + parameters.target_tolerance && values.left_key_lifttime >= 800 - parameters.target_tolerance && values.right_key_lifttime <= 800 + parameters.target_tolerance && values.right_key_lifttime >= 800 - parameters.target_tolerance) {
+			trial.go_feedback_success;
+		} else {
+			trial.go_feedback_fail;
+		}
+		;
+	} 
+	;
+]
+/ branch = [
+	if (values.partialtrial_left == 1) {
+		if (values.right_key_lift == 0) {
+			values.ssd_left = values.ssd_left - parameters.staircase_increment;
+			trial.feedback_stop_error;
+		} else if (values.right_key_lift != 0) {
+			values.ssd_left = values.ssd_left - parameters.staircase_increment;
+			trial.stop_feedback_fail;
+		}
+		;
+	}
+	;
+]
+/ branch = [
+	if (values.partialtrial_right == 1) {
+		if (values.right_key_lift == 0) {			
+			trial.check_right_not_lifted_too_soon;
+		} else {
+			values.ssd_right = values.ssd_right - parameters.staircase_increment;
+			trial.stop_feedback_fail;
+		}
+		;
+	}
+	;
+]
+/ responseinterrupt = immediate	
+/ timeout = values.right_stop_bar_percent - values.first_key_latency
+/ recorddata = true
+</trial>
+
+<trial go_left_continuing>
+/ ontrialbegin = [
+	values.second_key = 0;
+	values.left_key_lift = 0;
+	values.left_key_lifttime = 0;
+	if (values.partialtrial_left == 0 && values.partialtrial_right == 0) {
+		values.right_key_lift = trial.go.response;
+		values.right_key_lifttime = trial.go.latency;
+		values.first_key_latency = trial.go.latency;
+		values.first_key = trial.go.response;
+		values.left_stop_bar_percent = parameters.max_trialduration;
+	} else if (values.partialtrial_left == 1) {
+		values.right_key_lift = trial.stop_left.response;
+		values.right_key_lifttime = trial.stop_left.latency;
+		values.first_key_latency = trial.stop_left.latency;
+		values.first_key = trial.stop_left.response;
+		values.left_stop_bar_percent = values.ssd_left;
+	} else if (values.partialtrial_right == 1) {
+		values.right_key_lift = trial.stop_right.response;
+		values.right_key_lifttime = trial.stop_right.latency;
+		values.first_key_latency = trial.stop_right.latency;
+		values.first_key = trial.stop_right.response;
+		values.left_stop_bar_percent = parameters.max_trialduration;
+	}
+	;	
+]
+/ stimulusframes = [1 = target_start, blankbar_left, blankbar_right, bar_left_continuing, bar_right_stopped, blankbottomrectangle, remove_feedback]
+/ inputdevice = keyboard
+/ validresponse = (-44)
+/ isvalidresponse = [
+	if (values.second_key == 0) {				
+		values.second_key = trial.go_left_continuing.response;
+		values.left_key_lift = trial.go_left_continuing.response;
+		values.left_key_lifttime = trial.go_left_continuing.latency + values.first_key_latency;
+		values.left_stop_bar_percent = values.left_key_lifttime;
+	}
+	false;
+	values.first_key != 0 && values.second_key != 0
+]
+/ branch = [
+	if (values.partialtrial_left == 0 && values.partialtrial_right == 0) {
+		if (values.left_key_lift == 0) {
+			trial.full_bar;
+		} else if (values.left_key_lifttime <= 800 + parameters.target_tolerance && values.left_key_lifttime >= 800 - parameters.target_tolerance && values.right_key_lifttime <= 800 + parameters.target_tolerance && values.right_key_lifttime >= 800 - parameters.target_tolerance) {
+			trial.go_feedback_success;
+		} else {
+			trial.go_feedback_fail;
+		}
+		;
+	} 
+	;
+]
+/ branch = [
+	if (values.partialtrial_left == 1) {
+		if (values.left_key_lift == 0) {			
+			trial.check_left_not_lifted_too_soon;
+		} else if (values.left_key_lift != 0) {  
+			values.ssd_left = values.ssd_left - parameters.staircase_increment;
+			trial.stop_feedback_fail;
+		} 
+		;
+	} 
+	;
+]
+/ branch = [
+	if (values.partialtrial_right == 1) {
+		if (values.left_key_lift == 0) {
+			values.ssd_right = values.ssd_right - parameters.staircase_increment;
+			trial.feedback_stop_error;
+		} else if (values.left_key_lift != 0) {
+			values.ssd_right = values.ssd_right - parameters.staircase_increment;
+			trial.stop_feedback_fail;
+		}
+		;
+	}
+	;
+]
+/ responseinterrupt = immediate	
+/ timeout = values.left_stop_bar_percent - values.first_key_latency
+/ recorddata = true
+</trial>
+
+
+
+
+/////////////////////////////////////////////
+Stop trials
+/////////////////////////////////////////////
+
+
+<trial stop_both>
+/ pretrialpause = parameters.randomdelay
+/ ontrialbegin = [
+	if (values.ssd_both < 50) {
+		values.ssd_both = 50;
+	}
+	;
+	values.ssd = values.ssd_both;
+	values.first_key =0;
+	values.first_key_latency = 0;
+	
+	values.left_key_lift = 0;
+	values.left_key_lifttime = 0;
+	values.right_key_lift = 0;
+	values.right_key_lifttime = 0;
+	values.left_stop_bar_percent = values.ssd_both;
+	values.right_stop_bar_percent = values.ssd_both;
+	values.correctkeys_one = "-44";
+	values.correctkeys_two = "-53";
+]
+/ stimulusframes = [1 = target_start, blankbar_left, blankbar_right, bar_left, bar_right, blankbottomrectangle, remove_feedback]
+/ inputdevice = keyboard
+/ validresponse = (-44, -53)
+/ isvalidresponse = [
+	if (values.first_key == 0) {
+		values.first_key = trial.stop_both.response;
+		values.first_key_latency = trial.stop_both.latency;
+		if (trial.stop_both.response == -44) {			
+			values.left_key_lift = trial.stop_both.response;
+			values.left_key_lifttime = trial.stop_both.latency;
+			values.left_stop_bar_percent = values.left_key_lifttime;
+			values.correctkeys_one = "";
+		} else if (trial.stop_both.response == -53) {
+			values.right_key_lift = trial.stop_both.response;
+			values.right_key_lifttime = trial.stop_both.latency;
+			values.right_stop_bar_percent = values.right_key_lifttime;
+			values.correctkeys_two = "";
+		}
+		;
+		false;
+	}	
+	values.first_key != 0
+]
+/ branch = [
+	if (trial.stop_both.response == -44) {
+		trial.stopboth_right_continuing;
+	} else if (trial.stop_both.response == -53) {
+		trial.stopboth_left_continuing;
+	} else if (values.left_key_lift == 0 && values.right_key_lift == 0) {
+		trial.check_no_lift_stopboth;		
+	} 
+	;
+]
+/ responseinterrupt = immediate
+/ timeout = values.ssd_both + parameters.randomdelay
+/ recorddata = false
+</trial>
+
+<trial stopboth_left_continuing>
+/ ontrialbegin = [
+	values.second_key = 0;
+	values.right_key_lift = trial.stop_both.response;
+	values.right_key_lifttime = trial.stop_both.latency;
+	values.first_key_latency = trial.stop_both.latency;
+	values.first_key = trial.stop_both.response;
+	values.left_key_lift = 0;
+	values.left_key_lifttime = 0;
+]
+/ stimulusframes = [1 = target_start, blankbar_left, blankbar_right, bar_left_continuing_stopboth, bar_right_stopped, blankbottomrectangle, remove_feedback]
+/ inputdevice = keyboard
+/ validresponse = (-44)
+/ isvalidresponse = [
+	if (values.second_key == 0) {				
+		values.second_key = trial.stopboth_left_continuing.response;
+		values.left_key_lift = trial.stopboth_left_continuing.response;
+		values.left_key_lifttime = trial.stopboth_left_continuing.latency + values.first_key_latency;
+		values.left_stop_bar_percent = values.left_key_lifttime;
+	}
+	false;
+	values.first_key != 0 && values.second_key != 0
+]
+/ branch = [
+	values.ssd_both = values.ssd_both - parameters.staircase_increment;
+	trial.stop_feedback_fail;	
+]
+/ responseinterrupt = immediate	
+/ timeout = values.ssd_both - values.first_key_latency
+/ recorddata = true
+</trial>
+
+
+<trial stopboth_right_continuing>
+/ ontrialbegin = [
+	values.second_key = 0;
+	values.left_key_lift = trial.stop_both.response;
+	values.left_key_lifttime = trial.stop_both.latency;
+	values.first_key_latency = trial.stop_both.latency;
+	values.first_key = trial.stop_both.response;
+	values.right_key_lift = 0;
+	values.right_key_lifttime = 0;
+]
+/ stimulusframes = [1 = target_start, blankbar_left, blankbar_right, bar_left_stopped, bar_right_continuing_stopboth, blankbottomrectangle, remove_feedback]
+/ inputdevice = keyboard
+/ validresponse = (-53)
+/ isvalidresponse = [
+	if (values.second_key == 0) {				
+		values.second_key = trial.stopboth_right_continuing.response;
+		values.right_key_lift = trial.stopboth_right_continuing.response;
+		values.right_key_lifttime = trial.stopboth_right_continuing.latency + values.first_key_latency;
+		values.right_stop_bar_percent = values.right_key_lifttime;
+	}
+	false;
+	values.first_key != 0 && values.second_key != 0
+]
+/ branch = [
+	values.ssd_both = values.ssd_both - parameters.staircase_increment;
+	trial.stop_feedback_fail;
+]
+/ responseinterrupt = immediate	
+/ timeout = values.ssd_both - values.first_key_latency
+/ recorddata = true
+</trial>
+
+<trial check_no_lift_stopboth>
+/ ontrialbegin = [
+	values.first_key = 0;
+	values.first_key_latency = 0;
+	values.second_key = 0;
+	values.second_key_latency = 0;
+]
+/ stimulusframes = [1 = target_start, blankbar_left, blankbar_right, bar_left_stopped, bar_right_stopped, blankbottomrectangle, remove_feedback]
+/ inputdevice = keyboard
+/ validresponse = (-44, -53)
+/ isvalidresponse = [
+	if (values.first_key == 0) {				
+		values.first_key = trial.check_no_lift_stopboth.response;
+		values.first_key_latency = trial.check_no_lift_stopboth.latency;
+		if (trial.check_no_lift_stopboth.response == -44) {
+			values.left_key_lift = trial.check_no_lift_stopboth.response;
+			values.left_key_lifttime = trial.check_no_lift_stopboth.latency + values.ssd_both;
+		} else if (trial.check_no_lift_stopboth.response == -53) {
+			values.right_key_lift = trial.check_no_lift_stopboth.response;
+			values.right_key_lifttime = trial.check_no_lift_stopboth.latency + values.ssd_both;
+		}
+		;
+	} 
+	values.first_key != 0
+	
+	if (values.first_key != 0 && trial.check_no_lift_stopboth.latency > values.first_key_latency) {				
+		values.second_key = trial.check_no_lift_stopboth.response;
+		if (trial.check_no_lift_stopboth.response == -44) {
+			values.left_key_lift = trial.check_no_lift_stopboth.response;
+			values.left_key_lifttime = trial.check_no_lift_stopboth.latency + values.ssd_both;
+		} else if (trial.check_no_lift_stopboth.response == -53) {
+			values.right_key_lift = trial.check_no_lift_stopboth.response;
+			values.right_key_lifttime = trial.check_no_lift_stopboth.latency + values.ssd_both;
+		}
+		;
+	} 
+	values.second_key != 0
+]
+/ branch = [
+	if (values.first_key == 0 && values.second_key == 0) {
+		values.ssd_both = values.ssd_both + parameters.staircase_increment;
+		trial.stopboth_feedback_success;
+	} else {
+		values.ssd_both = values.ssd_both - parameters.staircase_increment;
+		trial.stop_feedback_fail;
+	} 
+	;
+]
+/ responseinterrupt = immediate	
+/ timeout = parameters.totalriseduration - values.ssd_both
+/ recorddata = true
+</trial>
+
+////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+
+<trial stop_left>
+/ pretrialpause = parameters.randomdelay
+/ ontrialbegin = [
+	if (values.ssd_left < 50) {
+		values.ssd_left = 50;
+	}
+	;
+	values.ssd = values.ssd_left;
+	values.partialtrial_left = 1;
+	values.partialtrial_right = 0;
+	values.first_key =0;
+	values.first_key_latency = 0;
+	
+	values.left_key_lift = 0;
+	values.left_key_lifttime = 0;
+	values.right_key_lift = 0;
+	values.right_key_lifttime = 0;
+	values.left_stop_bar_percent = values.ssd_left;
+	values.right_stop_bar_percent = values.ssd_left;	
+]
+/ stimulusframes = [1 = target_start, blankbar_left, blankbar_right, bar_left, bar_right, blankbottomrectangle, remove_feedback]
+/ inputdevice = keyboard
+/ validresponse = (-44, -53)
+/ isvalidresponse = [
+	if (values.first_key == 0) {
+		values.first_key = trial.stop_left.response;
+		values.first_key_latency = trial.stop_left.latency;
+		if (trial.stop_left.response == -44) {			
+			values.left_key_lift = trial.stop_left.response;
+			values.left_key_lifttime = trial.stop_left.latency;
+			values.left_stop_bar_percent = values.left_key_lifttime;
+		} else if (trial.stop_left.response == -53) {
+			values.right_key_lift = trial.stop_left.response;
+			values.right_key_lifttime = trial.stop_left.latency;
+			values.right_stop_bar_percent = values.right_key_lifttime;
+		} 
+		;
+		false;
+	} 	
+	values.first_key != 0
+]
+/ branch = [
+	if (trial.stop_left.response == -44) {
+		trial.go_right_continuing;
+	} else if (trial.stop_left.response == -53) {
+		trial.go_left_continuing;
+	} else if (values.left_key_lift == 0 && values.right_key_lift == 0){
+		trial.stop_left_after_ssd;
+	}
+	;
+]
+/ responseinterrupt = immediate
+/ timeout = values.ssd_left + parameters.randomdelay
+/ recorddata = false
+</trial>
+
+<trial stop_left_after_ssd>
+/ ontrialbegin = [
+	values.first_key =0;
+	values.first_key_latency = values.ssd_left;
+	
+	values.left_key_lift = 0;
+	values.left_key_lifttime = 0;
+	values.right_key_lift = 0;
+	values.right_key_lifttime = 0;
+	values.left_stop_bar_percent = values.ssd_left;
+	values.right_stop_bar_percent = parameters.max_trialduration;
+]
+/ stimulusframes = [1 = target_start, blankbar_left, blankbar_right, bar_left_stopped, bar_right_continuing, blankbottomrectangle, remove_feedback]
+/ inputdevice = keyboard
+/ validresponse = (-44, -53)
+/ isvalidresponse = [
+	if (values.first_key == 0) {
+		values.first_key = trial.stop_left_after_ssd.response;
+		values.first_key_latency = values.first_key_go_latency + trial.stop_left_after_ssd.latency;
+		if (trial.stop_left_after_ssd.response == -44) {			
+			values.left_key_lift = trial.stop_left_after_ssd.response;
+			values.left_key_lifttime = trial.stop_left_after_ssd.latency + values.ssd_left;			
+		} else if (trial.stop_left_after_ssd.response == -53) {
+			values.right_key_lift = trial.stop_left_after_ssd.response;
+			values.right_key_lifttime = trial.stop_left_after_ssd.latency + values.ssd_left;
+			values.right_stop_bar_percent = values.right_key_lifttime;
+		} 
+		;
+		false;
+	} 	
+	values.first_key != 0
+]
+/ branch = [
+	if (trial.stop_left_after_ssd.response == -44) {
+		trial.partial_right_continuing; 
+	} else if (trial.stop_left_after_ssd.response == -53) {
+		trial.check_no_left_lift;
+	} else if (values.left_key_lift == 0 && values.right_key_lift == 0) {
+		trial.stoppartial_nolift;		
+	}
+	;
+]
+/ responseinterrupt = immediate
+/ timeout = parameters.max_trialduration - values.ssd_left
+/ recorddata = false
+</trial>
+
+<trial stoppartial_nolift>
+/ ontrialbegin = [
+	if (values.partialtrial_left == 1 && values.partialtrial_right == 0) {
+		values.ssd_left = values.ssd_left - parameters.staircase_increment;
+	} else if (values.partialtrial_right == 1 && values.partialtrial_left == 0) {
+		values.ssd_right = values.ssd_right - parameters.staircase_increment;
+	}
+	;
+]
+/ branch = [
+	trial.stop_feedback_success_misstarget;
+]
+/ response = noresponse
+/ timeout = 1
+/ recorddata = true
+</trial>
+
+
+<trial check_no_left_lift>
+/ ontrialbegin = [
+	values.second_key = 0;
+	values.left_key_lift = 0;
+	values.left_key_lifttime = 0;
+	values.first_key_latency = trial.stop_left_after_ssd.latency + values.ssd_left;
+	values.first_key = trial.stop_left_after_ssd.response;
+]
+/ stimulusframes = [1 = target_start, blankbar_left, blankbar_right, bar_left_stopped, bar_right_stopped, blankbottomrectangle, remove_feedback]
+/ inputdevice = keyboard
+/ validresponse = (-44)
+/ isvalidresponse = [
+	if (values.second_key == 0) {				
+		values.second_key = trial.check_no_left_lift.response;
+		values.left_key_lift = trial.check_no_left_lift.response;
+		values.left_key_lifttime = trial.check_no_left_lift.latency + values.first_key_latency;		
+	}
+	false;
+	values.first_key != 0 && values.second_key != 0
+]
+/ branch = [
+	if (values.left_key_lift == 0 && values.right_key_lifttime <= 800 + parameters.target_tolerance && values.right_key_lifttime >= 800 - parameters.target_tolerance) {
+		values.ssd_left = values.ssd_left + parameters.staircase_increment;
+		trial.go_feedback_success;
+	} else if (values.left_key_lift == 0 && (values.right_key_lifttime > 800 + parameters.target_tolerance || values.right_key_lifttime < 800 - parameters.target_tolerance)) {  
+		values.ssd_left = values.ssd_left + parameters.staircase_increment;
+		trial.stop_feedback_success_misstarget;
+	} else if (values.left_key_lift != 0){
+		values.ssd_left = values.ssd_left - parameters.staircase_increment;
+		trial.stop_feedback_fail;
+	}
+	;
+]
+/ responseinterrupt = immediate	
+/ timeout = parameters.totalriseduration - values.first_key_latency
+/ recorddata = true
+</trial>
+
+<trial partial_right_continuing>
+/ ontrialbegin = [
+	values.ssd = values.ssd_left;
+	values.second_key = 0;
+	values.left_key_lift = trial.stop_left_after_ssd.response;
+	values.left_key_lifttime = trial.stop_left_after_ssd.latency + values.ssd_left;	
+	values.first_key_latency = trial.stop_left_after_ssd.latency + values.ssd_left;
+	values.first_key = trial.stop_left_after_ssd.response;
+	values.right_key_lift = 0;
+	values.right_key_lifttime = 0;
+	values.left_stop_bar_percent = values.ssd_left;
+]
+/ stimulusframes = [1 = target_start, blankbar_left, blankbar_right, bar_left_stopped, bar_right_continuing, blankbottomrectangle, remove_feedback]
+/ inputdevice = keyboard
+/ validresponse = (-53)
+/ isvalidresponse = [
+	if (values.second_key == 0) {
+		values.second_key = trial.partial_right_continuing.response;
+		values.right_key_lift = trial.partial_right_continuing.response;
+		values.right_key_lifttime = trial.partial_right_continuing.latency + values.first_key_latency;
+		values.right_stop_bar_percent = values.right_key_lifttime;
+	} 	
+	false;
+	values.first_key != 0 && values.second_key != 0
+]
+/ branch = [
+	if (values.right_key_lift == 0) {
+		values.ssd_left = values.ssd_left - parameters.staircase_increment;
+		trial.feedback_stop_error;
+	} else {
+		values.ssd_left = values.ssd_left - parameters.staircase_increment;
+		trial.stop_feedback_fail;
+	}
+]
+/ responseinterrupt = immediate	
+/ timeout = parameters.totalriseduration - values.first_key_latency
+/ recorddata = true
+</trial>
+
+<trial check_left_not_lifted_too_soon>
+/ ontrialbegin = [
+	values.second_key = 0;
+	values.left_key_lift = 0;
+	values.left_key_lifttime = 0;
+	values.first_key_latency = trial.stop_left.latency + values.ssd_left;
+	values.first_key = trial.stop_left.response;
+]
+/ stimulusframes = [1 = target_start, blankbar_left, blankbar_right, bar_left_stopped, bar_right_stopped, blankbottomrectangle, remove_feedback]
+/ inputdevice = keyboard
+/ validresponse = (-44)
+/ isvalidresponse = [
+	if (values.second_key == 0) {				
+		values.second_key = trial.check_left_not_lifted_too_soon.response;
+		values.left_key_lift = trial.check_left_not_lifted_too_soon.response;
+		values.left_key_lifttime = trial.check_left_not_lifted_too_soon.latency + values.first_key_latency;		
+	}
+	false;
+	values.first_key != 0 && values.second_key != 0
+]
+/ branch = [
+	if (values.left_key_lift == 0 && values.right_key_lifttime <= 800 + parameters.target_tolerance && values.right_key_lifttime >= 800 - parameters.target_tolerance) {
+		values.ssd_left = values.ssd_left + parameters.staircase_increment;
+		trial.go_feedback_success;
+	} else if (values.left_key_lift == 0 && (values.right_key_lifttime > 800 + parameters.target_tolerance || values.right_key_lifttime < 800 - parameters.target_tolerance)) {  
+		values.ssd_left = values.ssd_left + parameters.staircase_increment;
+		trial.stop_feedback_success_misstarget;
+	} else if (values.left_key_lift != 0){
+		values.ssd_left = values.ssd_left - parameters.staircase_increment;
+		trial.stop_feedback_fail;
+	}
+	;
+]
+/ responseinterrupt = immediate	
+/ timeout = parameters.totalriseduration - values.first_key_latency
+/ recorddata = true
+</trial>
+
+
+////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+
+<trial stop_right>
+/ pretrialpause = parameters.randomdelay
+/ ontrialbegin = [
+	if (values.ssd_right < 50) {
+		values.ssd_right = 50;
+	}
+	;
+	values.ssd = values.ssd_right;
+	values.partialtrial_right = 1;
+	values.partialtrial_left = 0;
+	values.first_key =0;
+	values.first_key_latency = 0;
+	
+	values.left_key_lift = 0;
+	values.left_key_lifttime = 0;
+	values.right_key_lift = 0;
+	values.right_key_lifttime = 0;
+	values.left_stop_bar_percent = values.ssd_right;
+	values.right_stop_bar_percent = values.ssd_right;	
+]
+/ stimulusframes = [1 = target_start, blankbar_left, blankbar_right, bar_left, bar_right, blankbottomrectangle, remove_feedback]
+/ inputdevice = keyboard
+/ validresponse = (-44, -53)
+/ isvalidresponse = [
+	if (values.first_key == 0) {
+		values.first_key = trial.stop_right.response;
+		values.first_key_latency = trial.stop_right.latency;
+		if (trial.stop_right.response == -44) {			
+			values.left_key_lift = trial.stop_right.response;
+			values.left_key_lifttime = trial.stop_right.latency;
+			values.left_stop_bar_percent = values.left_key_lifttime;
+		} else if (trial.stop_right.response == -53) {
+			values.right_key_lift = trial.stop_right.response;
+			values.right_key_lifttime = trial.stop_right.latency;
+			values.right_stop_bar_percent = values.right_key_lifttime;
+		} 
+		;
+		false;
+	} 	
+	values.first_key != 0
+]
+/ branch = [
+	if (trial.stop_right.response == -44) {
+		trial.go_right_continuing;
+	} else if (trial.stop_right.response == -53) {
+		trial.go_left_continuing;
+	} else if (values.left_key_lift == 0 && values.right_key_lift == 0){
+		trial.stop_right_after_ssd;
+	}
+	;
+]
+/ responseinterrupt = immediate
+/ timeout = values.ssd_right + parameters.randomdelay
+/ recorddata = false
+</trial>
+
+<trial stop_right_after_ssd>
+/ ontrialbegin = [
+	values.first_key =0;
+	values.first_key_latency = values.ssd_right;
+	
+	values.left_key_lift = 0;
+	values.left_key_lifttime = 0;
+	values.right_key_lift = 0;
+	values.right_key_lifttime = 0;
+	values.left_stop_bar_percent = parameters.max_trialduration;
+	values.right_stop_bar_percent =  values.ssd_right;
+]
+/ stimulusframes = [1 = target_start, blankbar_left, blankbar_right, bar_left_continuing, bar_right_stopped, blankbottomrectangle, remove_feedback]
+/ inputdevice = keyboard
+/ validresponse = (-44, -53)
+/ isvalidresponse = [
+	if (values.first_key == 0) {
+		values.first_key = trial.stop_right_after_ssd.response;
+		values.first_key_latency = values.first_key_go_latency + trial.stop_right_after_ssd.latency;
+		if (trial.stop_right_after_ssd.response == -44) {			
+			values.left_key_lift = trial.stop_right_after_ssd.response;
+			values.left_key_lifttime = trial.stop_right_after_ssd.latency + values.ssd_right;
+			values.left_stop_bar_percent = values.left_key_lifttime;			
+		} else if (trial.stop_right_after_ssd.response == -53) {
+			values.right_key_lift = trial.stop_right_after_ssd.response;
+			values.right_key_lifttime = trial.stop_right_after_ssd.latency + values.ssd_right;			
+		} 
+		;
+		false;
+	} 	
+	values.first_key != 0
+]
+/ branch = [
+	if (trial.stop_right_after_ssd.response == -44) {
+		trial.check_no_right_lift;		 
+	} else if (trial.stop_right_after_ssd.response == -53) {
+		trial.partial_left_continuing;
+	} else if (values.left_key_lift == 0 && values.right_key_lift == 0) {
+		trial.stoppartial_nolift;		
+	}
+	;
+]
+/ responseinterrupt = immediate
+/ timeout = parameters.max_trialduration - values.ssd_left
+/ recorddata = false
+</trial>
+
+<trial check_no_right_lift>
+/ ontrialbegin = [
+	values.second_key = 0;
+	values.right_key_lift = 0;
+	values.right_key_lifttime = 0;
+	values.first_key_latency = trial.stop_right_after_ssd.latency + values.ssd_right;
+	values.first_key = trial.stop_right_after_ssd.response;
+]
+/ stimulusframes = [1 = target_start, blankbar_left, blankbar_right, bar_left_stopped, bar_right_stopped, blankbottomrectangle, remove_feedback]
+/ inputdevice = keyboard
+/ validresponse = (-53)
+/ isvalidresponse = [
+	if (values.second_key == 0) {				
+		values.second_key = trial.check_no_right_lift.response;
+		values.right_key_lift = trial.check_no_right_lift.response;
+		values.right_key_lifttime = trial.check_no_right_lift.latency + values.first_key_latency;		
+	}
+	false;
+	values.first_key != 0 && values.second_key != 0
+]
+/ branch = [
+	if (values.right_key_lift == 0 && values.left_key_lifttime <= 800 + parameters.target_tolerance && values.left_key_lifttime >= 800 - parameters.target_tolerance) {
+		values.ssd_right = values.ssd_right + parameters.staircase_increment;
+		trial.go_feedback_success;
+	} else if (values.right_key_lift == 0 && (values.left_key_lifttime > 800 + parameters.target_tolerance || values.left_key_lifttime < 800 - parameters.target_tolerance)) {  
+		values.ssd_right = values.ssd_right + parameters.staircase_increment;
+		trial.stop_feedback_success_misstarget;
+	} else if (values.right_key_lift != 0){
+		values.ssd_right = values.ssd_right - parameters.staircase_increment;
+		trial.stop_feedback_fail;
+	}
+	;
+]
+/ responseinterrupt = immediate	
+/ timeout = parameters.totalriseduration - values.first_key_latency
+/ recorddata = true
+</trial>
+
+<trial partial_left_continuing>
+/ ontrialbegin = [
+	values.second_key = 0;
+	values.right_key_lift = trial.stop_right_after_ssd.response;
+	values.right_key_lifttime = trial.stop_right_after_ssd.latency + values.ssd_right;	
+	values.first_key_latency = trial.stop_right_after_ssd.latency + values.ssd_right;
+	values.first_key = trial.stop_right_after_ssd.response;
+	values.left_key_lift = 0;
+	values.left_key_lifttime = 0;
+	values.right_stop_bar_percent = values.ssd_right;
+]
+/ stimulusframes = [1 = target_start, blankbar_left, blankbar_right, bar_left_continuing, bar_right_stopped, blankbottomrectangle, remove_feedback]
+/ inputdevice = keyboard
+/ validresponse = (-44)
+/ isvalidresponse = [
+	if (values.second_key == 0) {
+		values.second_key = trial.partial_left_continuing.response;
+		values.left_key_lift = trial.partial_left_continuing.response;
+		values.left_key_lifttime = trial.partial_left_continuing.latency + values.first_key_latency;
+		values.left_stop_bar_percent = values.left_key_lifttime;
+	} 	
+	false;
+	values.first_key != 0 && values.second_key != 0
+]
+/ branch = [
+	if (values.left_key_lift == 0) {
+		values.ssd_right = values.ssd_right - parameters.staircase_increment;
+		trial.feedback_stop_error;
+	} else {
+		values.ssd_right = values.ssd_right - parameters.staircase_increment;
+		trial.stop_feedback_fail;
+	}
+]
+/ responseinterrupt = immediate	
+/ timeout = parameters.totalriseduration - values.first_key_latency
+/ recorddata = true
+</trial>
+
+<trial check_right_not_lifted_too_soon>
+/ ontrialbegin = [
+	values.second_key = 0;
+	values.right_key_lift = 0;
+	values.right_key_lifttime = 0;
+	values.first_key_latency = trial.stop_right.latency + values.ssd_right;
+	values.first_key = trial.stop_right.response;
+]
+/ stimulusframes = [1 = target_start, blankbar_left, blankbar_right, bar_left_stopped, bar_right_stopped, blankbottomrectangle, remove_feedback]
+/ inputdevice = keyboard
+/ validresponse = (-53)
+/ isvalidresponse = [
+	if (values.second_key == 0) {				
+		values.second_key = trial.check_right_not_lifted_too_soon.response;
+		values.right_key_lift = trial.check_right_not_lifted_too_soon.response;
+		values.right_key_lifttime = trial.check_right_not_lifted_too_soon.latency + values.first_key_latency;		
+	}
+	false;
+	values.first_key != 0 && values.second_key != 0
+]
+/ branch = [
+	if (values.right_key_lift == 0 && values.left_key_lifttime <= 800 + parameters.target_tolerance && values.left_key_lifttime >= 800 - parameters.target_tolerance) {
+		values.ssd_right = values.ssd_right + parameters.staircase_increment;
+		trial.go_feedback_success;
+	} else if (values.right_key_lift == 0 && (values.left_key_lifttime > 800 + parameters.target_tolerance || values.left_key_lifttime < 800 - parameters.target_tolerance)) {  
+		values.ssd_right = values.ssd_right + parameters.staircase_increment;
+		trial.stop_feedback_success_misstarget;
+	} else if (values.right_key_lift != 0){
+		values.ssd_right = values.ssd_right - parameters.staircase_increment;
+		trial.stop_feedback_fail;
+	}
+	;
+]
+/ responseinterrupt = immediate	
+/ timeout = parameters.totalriseduration - values.first_key_latency
+/ recorddata = true
+</trial>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////
+
+Feedbak
+
+////////////////////////////////////////////////////////////
+
+
+
+
+<trial full_bar>
+/ ontrialbegin = [
+	if (values.left_key_lift == 0 && values.right_key_lift == 0) {
+		values.ssd = "na";
+		values.left_key_lift = "NaN";
+		values.left_key_lifttime = 1000;
+		values.right_key_lift = "NaN";
+		values.right_key_lifttime = 1000;		
+	} else if (values.left_key_lift == 0 && values.right_key_lift != 0) {
+		values.left_key_lift = "NaN";
+		values.left_key_lifttime = 1000;
+	} else if (values.left_key_lift != 0 && values.right_key_lift == 0) {
+		values.right_key_lift = "NaN";
+		values.right_key_lifttime = 1000;
+	}
+	;
+]
+/ response = noresponse
+/ branch = [
+	trial.go_feedback_fail
+]
+/ timeout = 1000
+/ recorddata = false
+</trial>
+
+<trial go_feedback_success>
+/ response = noresponse
+/ stimulusframes = [1 = target_success, blankbar_left, blankbar_right, bar_left_stopped, bar_right_stopped, blankbottomrectangle, success]
+/ trialduration = 2000
+/ recorddata = false
+</trial>
+
+<trial stopboth_feedback_success>
+/ response = noresponse
+/ stimulusframes = [1 = target_success, blankbar_left, blankbar_right, bar_left_stopped, bar_right_stopped, blankbottomrectangle, success_stop]
+/ trialduration = 2000
+/ recorddata = false
+</trial>
+
+<trial go_feedback_fail>
+/ response = noresponse
+/ stimulusframes = [1 = target_fail, blankbar_left, blankbar_right, bar_left_stopped, bar_right_stopped, blankbottomrectangle, go_fail]
+/ trialduration = 2000
+/ recorddata = false
+</trial>
+
+<trial stop_feedback_fail>
+/ response = noresponse
+/ stimulusframes = [1 = target_fail, blankbar_left, blankbar_right, bar_left_stopped, bar_right_stopped, blankbottomrectangle, stop_fail]
+/ trialduration = 2000
+/ recorddata = false
+</trial>
+
+<trial feedback_stop_error>
+/ response = noresponse
+/ stimulusframes = [1 = target_fail, blankbar_left, blankbar_right, bar_left_stopped, bar_right_stopped, blankbottomrectangle, stop_error]
+/ trialduration = 2000
+/ recorddata = false
+</trial>
+
+<trial stop_feedback_success_misstarget>
+/ response = noresponse
+/ stimulusframes = [1 = target_fail, blankbar_left, blankbar_right, bar_left_stopped, bar_right_stopped, blankbottomrectangle, success_stop_missed_target]
+/ trialduration = 2000
+/ recorddata = false
+</trial>
+
+
+************************************
+<block practice>
+/ trials = [1-10 = init]
+</block>
+
+
+************************************
+<expt>
+/ blocks = [1=practice]
+</expt>
+
+********************
+raw data
+********************
+
+<data>
+/ columns = (build, computer.platform, date,time,subject, blockcode, blocknum, trial.init.count, list.practicedata.currentvalue, values.ssd, values.left_key_lifttime, values.right_key_lifttime)
+/ separatefiles = true
+</data>

@@ -1,0 +1,983 @@
+﻿// Write txt file from .mat - needs R2019 to use writecell
+// load practiceDataArray.mat
+// practiceDataInquisit = practiceArray(:,2)
+// writecell(practiceDataInquisit,'practiceDataInquisit_tab.txt','Delimiter','tab')
+
+// load trialDataArray.mat
+// trialDataInquisit = textArray(:,2)
+// writecell(trialDataInquisit,'trialDataInquisit_tab.txt','Delimiter','tab')
+
+
+
+************************************
+//<include practicedata_index>
+/// file = "practiceDataInquisit_tab.txt"
+//</include>
+
+<list practicedata>
+/ items = (
+"na"
+"na"
+"both"
+"both"
+"left"
+"left"
+"left"
+"right"
+"right"
+"right")
+/ selectionmode = sequence
+</list>
+
+<list experimentdata>
+/ items = (
+"na"
+"na"
+"na"
+"na"
+"na"
+"na"
+"na"
+"na"
+"na"
+"na")
+/ selectionmode = sequence
+</list>
+
+************************************
+<defaults>
+/ windowsize = (50%, 50%)
+/ txbgcolor = lightgray
+/ screencolor = lightgray
+</defaults>
+
+//////////////// shapes/animations //////////////////
+<shape blankbottomrectangle>
+/ shape = rectangle
+/ color = lightgray
+/ width = 100%
+/ height = values.blankbottomrectangle_y
+/ valign = top
+/ halign = center
+/ position = (50%, 80%)
+/ animation = path(parameters.totalriseduration, 1, 50%, expressions.start_y, 50%, expressions.start_y)
+/ erase = false
+</shape>
+
+<shape blankbottomrectangle_feedback>
+/ shape = rectangle
+/ color = lightgray
+/ width = 100%
+/ height = values.blankbottomrectangle_y
+/ valign = top
+/ halign = center
+/ position = (50%, 80%)
+/ erase = false
+</shape>
+
+<shape blanktoprectangle> // fix until Inquisit fixes their animation timing!!
+/ shape = rectangle
+/ color = lightgray
+/ width = 25%
+/ height = 2%
+/ valign = center
+/ halign = center
+/ position = (50%, expressions.end_y)
+/ animation = path(parameters.totalriseduration, 1, 50%, expressions.end_y, 50%, expressions.end_y)
+/ erase = false
+</shape>
+
+<shape blankbar_left>
+/ shape = rectangle
+/ color = white
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ position = (45%, expressions.end_y)
+/ animation = path(values.left_stop_bar_percent, 1, 45%, expressions.end_y, 45%, expressions.end_y)
+/ erase = false
+</shape>
+
+<shape blankbar_left_feedback>
+/ shape = rectangle
+/ color = white
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ position = (45%, expressions.end_y)
+/ erase = false
+</shape>
+
+<shape blankbar_right>
+/ shape = rectangle
+/ color = white
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ position = (45%, expressions.end_y)
+/ animation = path(values.right_stop_bar_percent, 1, 55%, expressions.end_y, 55%, expressions.end_y)
+/ erase = false
+</shape>
+
+<shape blankbar_right_feedback>
+/ shape = rectangle
+/ color = white
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ position = (55%, expressions.end_y)
+/ erase = false
+</shape>
+
+<shape target_start>
+/ shape = rectangle
+/ color = black
+/ width = 25%
+/ height = 1%
+/ valign = center
+/ halign = center
+/ position = (50%, expressions.location_target)
+// animation = path(parameters.totalriseduration, 1, 50%, expressions.location_target, 50%, expressions.location_target)
+/ erase = false
+</shape>
+
+
+
+////////////////////////////
+<shape target_success>
+/ shape = rectangle
+/ color = green
+/ width = 25%
+/ height = 1%
+/ valign = center
+/ halign = center
+/ position = (50%, expressions.location_target)
+/ erase = false
+</shape>
+
+<shape target_fail>
+/ shape = rectangle
+/ color = red
+/ width = 25%
+/ height = 1%
+/ valign = center
+/ halign = center
+/ position = (50%, expressions.location_target)
+/ erase = false
+</shape>
+
+<shape target_fail_bothfingers>
+/ shape = rectangle
+/ color = red
+/ width = 25%
+/ height = 1%
+/ valign = center
+/ halign = center
+/ position = (50%, expressions.location_target)
+/ erase = false
+</shape>
+
+
+/////////////// bars ////////////////
+
+<shape bar_left_rising>
+/ shape = rectangle
+/ color = black
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ animation = path(values.left_stop_bar_percent, 1, 45%, expressions.start_y, 45%, expressions.bar_left_stop)
+/ erase = false
+</shape>
+
+<shape bar_left_stopped>
+/ shape = rectangle
+/ color = black
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ animation = path(parameters.totalriseduration, 1, 45%, expressions.bar_left_stop, 45%, expressions.bar_left_stop)
+/ erase = false
+</shape>
+
+<shape bar_left_stopped_feedback>
+/ shape = rectangle
+/ color = black
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ position = (45%, expressions.bar_left_stop)
+/ erase = false
+</shape>
+
+<shape bar_right_rising>
+/ shape = rectangle
+/ color = black
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ animation = path(values.right_stop_bar_percent, 1, 55%, expressions.start_y, 55%, expressions.bar_right_stop)
+/ erase = false
+</shape>
+
+<shape bar_right_stopped>
+/ shape = rectangle
+/ color = black
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ animation = path(parameters.totalriseduration, 1, 55%, expressions.bar_right_stop, 55%, expressions.bar_right_stop)
+/ erase = false
+</shape>
+
+<shape bar_right_stopped_feedback>
+/ shape = rectangle
+/ color = black
+/ valign = top
+/ halign = center
+/ size = (parameters.barwidth, parameters.totalbarheight)
+/ position = (55%, expressions.bar_right_stop)
+/ erase = false
+</shape>
+
+
+//////////////////// feedback-related stimuli /////////////////
+
+<text success>
+/ items = ("             Success             ")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = green
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+<text success_stop>
+/ items = ("       Successful stop       ")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = green
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+<text go_fail>
+/ items = ("Missed target")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = red
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+<text stop_fail>
+/ items = ("           Unsuccessful stop           ")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = red
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+<text stop_error>
+/ items = ("Stopping error - incorrect side")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = red
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+
+<text success_stop_missed_target>
+/ items = ("Successful stop but missed target")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = red
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+<text trial_error>
+/ items = ("Error - finger lifted before trial")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = red
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+<text remove_feedback>
+/ items = ("                                                                         ")
+/ fontstyle = ("Arial", 5%, true)
+/ txcolor = white
+/ position = (50%, 15%)
+/ valign = center
+/ halign = center
+/ erase = false
+</text>
+
+
+// Instruction elements
+************************************
+
+<item instructions>
+/ 1 = "INSTRUCTIONS
+
+
+You will now complete the Bar-filling Task which is designed to measure your response time and impulse control
+
+You are going to see two black bars rise on the screen
+
+You will control the bars using the <%parameters.responsekey_left_label%> and <%parameters.responsekey_right_label%> keys
+
+While your fingers are on the keys, the bars will rise. When you lift your fingers off the keys, the bars will stop
+
+Most of the time, you will need to lift both fingers to make the bars stop at a stationary target line
+
+However, sometimes the bars will not reach the target and in that case you need to try and prevent your fingers from lifting off the keys
+
+Do not worry if this does not yet make sense - you will now see 4 short instruction videos to clearly explain what is required. After each video you will have an opportunity to practice what you have seen in the video
+
+Press < SPACEBAR > when you are ready for the first video"
+
+/ 2 = "YOUR TURN
+
+
+You will now practice 3 GO trials
+
+If you need to first re-watch the video, press < I >
+
+Otherwise, press < SPACEBAR > when you are ready"
+
+/ 3 = "YOUR TURN
+
+
+You will now practice 3 STOP BOTH trials
+
+If you need to first re-watch the video, press < i >
+
+Otherwise, press < SPACEBAR > when you are ready"
+
+/ 4 = "YOUR TURN
+
+
+You will now practice 3 STOP LEFT trials
+
+If you need to first re-watch the video, press < i >
+
+Otherwise, press < SPACEBAR > when you are ready"
+
+/ 5 = "YOUR TURN
+
+
+You will now practice 3 STOP RIGHT trials
+
+If you need to first re-watch the video, press < i >
+
+Otherwise, press < SPACEBAR > when you are ready"
+
+/ 6 = "REAL THING
+
+
+You will now "
+
+</item>
+
+<text  instructions>
+/ items = instructions
+/ vjustify = center
+/ hjustify = left
+/ size = (80%, 80%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ select = sequence
+/ resetinterval = 0
+</text>
+
+<trial instructions>
+/ stimulustimes = [1=instructions]
+/ inputdevice = keyboard
+/ validresponse = (57)
+/ recorddata = false
+</trial>
+
+************************************
+<values>
+
+/ blankbottomrectangle_y = 20%
+
+/ left_key_lifttime = 0
+/ right_key_lifttime = 0
+/ left_key_pressed = false
+/ right_key_pressed = false
+/ liftedbeforebars = false
+/ left_stop_bar_percent = 0
+/ right_stop_bar_percent = 0
+
+/ ssd = "na"
+/ ssd_both = parameters.initial_stop_time_both
+/ ssd_left = parameters.initial_stop_time_left
+/ ssd_right = parameters.initial_stop_time_right
+
+</values>
+
+************************************
+
+<parameters>
+
+/ barwidth = 5%
+/ totalbarheight = 50%
+/ totalriseduration = 1000
+/ targetlocation = totalbarheight * 0.8
+/ randomdelay = rand(400,900)
+
+/ target_tolerance = 30
+/ staircase_increment = 25
+
+/ responsekey_left_down = 44
+/ responsekey_left_up = -44
+/ responsekey_right_down = 53
+/ responsekey_right_up = -53
+/ responsekey_left_label = "< Z >"
+/ responsekey_right_label = "< ? >"
+/ max_pretrialduration = 30000
+/ max_trialduration = 1000
+
+/ initial_stop_time_both = 600
+/ initial_stop_time_left = 600
+/ initial_stop_time_right = 600
+
+</parameters>
+
+*************************************
+
+<expressions>
+/ start_y = (100 - values.blankbottomrectangle_y)
+/ end_y = expressions.start_y - parameters.totalbarheight
+
+/ bar_left_stop = expressions.start_y - ((values.left_stop_bar_percent/1000) * parameters.totalbarheight)
+/ bar_right_stop = expressions.start_y - ((values.right_stop_bar_percent/1000) * parameters.totalbarheight)
+
+/ speed = parameters.totalriseduration/(expressions.end_y - expressions.start_y)
+/ location_target = expressions.start_y - parameters.targetlocation
+</expressions>
+
+************************************
+<response mainresponse>
+/ mode = correct
+/ timeout = 3000 //parameters.max_trialduration
+</response>
+
+************************************
+<trial pretrial_practice>
+/ ontrialbegin = [
+	list.practicedata.nextvalue;
+	values.left_key_pressed = false;
+	values.right_key_pressed = false;
+	values.left_key_lifttime = 0;
+	values.right_key_lifttime = 0;
+	shape.bar_left_rising.skip = false;
+	shape.bar_right_rising.skip = false;
+	shape.blankbar_left.skip = false;
+	shape.blankbar_right.skip = false;
+	shape.target_start.skip = false;
+	shape.target_fail.skip = false;
+	shape.target_success.skip = false;
+	text.success_stop_missed_target.skip = false;
+	text.success.skip = false;
+	text.stop_fail.skip = false;
+	shape.target_fail_bothfingers.skip = false;	
+]
+/ stimulustimes = [0 = target_start, blankbottomrectangle_feedback, blankbar_left_feedback, blankbar_right_feedback, remove_feedback, blanktoprectangle]
+/ isvalidresponse = [
+	if(trial.pretrial_practice.response == 44) {
+		values.left_key_pressed = true;
+	}
+	if(trial.pretrial_practice.response == 53) {
+		values.right_key_pressed = true;
+	}
+	if(trial.pretrial_practice.response == -44) {
+		values.left_key_pressed = false;
+	}
+	if(trial.pretrial_practice.response == -53) {
+		values.right_key_pressed = false;
+	}
+	return values.left_key_pressed && values.right_key_pressed;
+]
+/ responseinterrupt = immediate
+/ branch = [
+	if (list.practicedata.currentvalue == "na") {
+		trial.go;
+	} else if (list.practicedata.currentvalue == "both") {
+		trial.stop_both;
+	} else if (list.practicedata.currentvalue == "left") {
+		trial.stop_left;
+	} else if (list.practicedata.currentvalue == "right") {
+		trial.stop_right;
+	};
+]
+/ posttrialpause = parameters.randomdelay
+/ recorddata = false		
+</trial>
+
+<trial pretrial_experiment>
+/ ontrialbegin = [
+	list.experimentdata.nextvalue;
+	values.left_key_pressed = false;
+	values.right_key_pressed = false;
+	values.left_key_lifttime = 0;
+	values.right_key_lifttime = 0;
+	shape.bar_left_rising.skip = false;
+	shape.bar_right_rising.skip = false;
+	shape.blankbar_left.skip = false;
+	shape.blankbar_right.skip = false;
+	shape.target_start.skip = false;
+	shape.target_fail.skip = false;
+	shape.target_success.skip = false;
+	text.success_stop_missed_target.skip = false;
+	text.success.skip = false;
+	text.stop_fail.skip = false;
+	shape.target_fail_bothfingers.skip = false;	
+]
+/ stimulustimes = [0 = target_start, blankbottomrectangle_feedback, blankbar_left_feedback, blankbar_right_feedback, remove_feedback, blanktoprectangle]
+/ isvalidresponse = [
+	if(trial.pretrial_experiment.response == 44) {
+		values.left_key_pressed = true;
+	}
+	if(trial.pretrial_experiment.response == 53) {
+		values.right_key_pressed = true;
+	}
+	if(trial.pretrial_experiment.response == -44) {
+		values.left_key_pressed = false;
+	}
+	if(trial.pretrial_experiment.response == -53) {
+		values.right_key_pressed = false;
+	}
+	return values.left_key_pressed && values.right_key_pressed;
+]
+/ responseinterrupt = immediate
+/ branch = [
+	if (list.experimentdata.currentvalue == "na") {
+		trial.go;
+	} else if (list.experimentdata.currentvalue == "both") {
+		trial.stop_both;
+	} else if (list.experimentdata.currentvalue == "left") {
+		trial.stop_left;
+	} else if (list.experimentdata.currentvalue == "right") {
+		trial.stop_right;
+	};
+]
+/ posttrialpause = parameters.randomdelay
+/ recorddata = false		
+</trial>
+
+/////////////////////////////////////////////
+Go trial
+/////////////////////////////////////////////
+
+<trial go>
+/ ontrialbegin = [
+	values.ssd = "na";
+	shape.bar_left_rising.skip = false;
+	shape.bar_right_rising.skip = false;
+	shape.blankbar_left.skip = false;
+	shape.blankbar_right.skip = false;
+	shape.target_fail.skip = false;
+	shape.target_success.skip = false;
+	text.go_fail.skip = false;
+	values.left_key_lifttime = 0;
+	values.right_key_lifttime = 0;
+	values.left_stop_bar_percent = parameters.max_trialduration;
+	values.right_stop_bar_percent = parameters.max_trialduration;
+]
+/ stimulustimes = [0 = target_start, blankbar_left, blankbar_right, bar_left_rising, bar_right_rising, blankbottomrectangle, remove_feedback, blanktoprectangle; 1000=shape.target_success; 1000=shape.target_fail; 1000=text.success; 1000=text.go_fail]
+/ beginresponsetime = -1
+/ response = mainresponse
+/ responseinterrupt = trial
+/ isvalidresponse = [
+	if (trial.go.latency < parameters.max_trialduration) {
+		if(trial.go.response == -44 && values.left_key_lifttime == 0) {
+			//if(trial.go.latency < parameters.randomdelay) {
+				//values.liftedbeforebars= true;
+				//values.left_key_lifttime = -1;
+			//} else {
+			values.left_key_lifttime = trial.go.latency;
+			shape.bar_left_rising.skip = true;
+			shape.blankbar_left.skip = true;		
+			values.left_stop_bar_percent = values.left_key_lifttime;
+			//}
+		};
+		if(trial.go.response == -53 && values.right_key_lifttime == 0) {
+			values.right_key_lifttime = trial.go.latency;
+			shape.bar_right_rising.skip = true;
+			shape.blankbar_right.skip = true;		
+			values.right_stop_bar_percent = values.right_key_lifttime;
+		};
+	
+		if (values.left_key_lifttime <= 800 + parameters.target_tolerance && values.left_key_lifttime >= 800 - parameters.target_tolerance && values.right_key_lifttime <= 800 + parameters.target_tolerance && values.right_key_lifttime >= 800 - parameters.target_tolerance) {
+			shape.target_fail.skip = true;
+			text.go_fail.skip = true;
+		};
+	};
+	return trial.go.response == -44 || trial.go.response == -53
+]
+/ ontrialend = [
+	shape.bar_left_rising.skip = false;
+	shape.bar_right_rising.skip = false;
+	shape.blankbar_left.skip = false;
+	shape.blankbar_right.skip = false;
+	shape.target_fail.skip = false;
+	shape.target_success.skip = false;
+	text.go_fail.skip = false;
+	values.liftedbeforebars = false;
+]
+/ recorddata = true
+</trial>
+
+/////////////////////////////////////////////
+Stop trials
+/////////////////////////////////////////////
+
+<trial stop_both>
+/ ontrialbegin = [
+	if (values.ssd_both < 50) {
+		values.ssd_both = 50;
+	}
+	;
+	values.ssd = values.ssd_both;
+	shape.bar_left_rising.skip = false;
+	shape.bar_right_rising.skip = false;
+	shape.blankbar_left.skip = false;
+	shape.blankbar_right.skip = false;
+	shape.target_start.skip = false;
+	shape.target_success.skip = false;
+	text.success_stop.skip = false;
+	values.left_key_lifttime = 0;
+	values.right_key_lifttime = 0;
+	values.left_stop_bar_percent = values.ssd_both;
+	values.right_stop_bar_percent = values.ssd_both;
+]
+/ stimulustimes = [0 = target_start, blankbar_left, blankbar_right, bar_left_rising, bar_right_rising, blankbottomrectangle, remove_feedback, blanktoprectangle; 1000=shape.target_fail; 1000=shape.target_success; 1000=text.stop_fail; 1000=text.success_stop; ]
+/ beginresponsetime = -1
+/ response = mainresponse
+/ responseinterrupt = trial
+/ isvalidresponse = [
+	if (trial.stop_both.latency < parameters.max_trialduration) {
+		if (trial.stop_both.response == -44 && values.left_key_lifttime == 0) {
+			//if(trial.go.latency < parameters.randomdelay) {
+				//values.liftedbeforebars= true;
+				//values.left_key_lifttime = -1;
+			//} else {
+			values.left_key_lifttime = trial.stop_both.latency;
+			
+			if (trial.stop_both.latency < values.ssd_both) {
+				shape.blankbar_left.skip = true;
+				shape.bar_left_rising.skip = true;
+				shape.target_start.skip = true;
+				values.left_stop_bar_percent = values.left_key_lifttime;
+			};
+			shape.target_success.skip = true;
+			text.success_stop.skip = true;
+			if (values.right_key_lifttime == 0) {
+				values.ssd_both = values.ssd_both - parameters.staircase_increment;
+			};
+		};
+		if (trial.stop_both.response == -53 && values.right_key_lifttime == 0) {
+			values.right_key_lifttime = trial.stop_both.latency;
+			if (trial.stop_both.latency < values.ssd_both) {
+				shape.blankbar_right.skip = true;
+				shape.bar_right_rising.skip = true;
+				shape.target_start.skip = true;
+				values.right_stop_bar_percent = values.right_key_lifttime;
+			};
+			shape.target_success.skip = true;
+			text.success_stop.skip = true;
+			if (values.left_key_lifttime == 0) {
+				values.ssd_both = values.ssd_both - parameters.staircase_increment;
+			};
+		};
+	};
+]
+/ ontrialend = [
+	if (values.left_key_lifttime == 0 && values.right_key_lifttime == 0) {
+		values.ssd_both = values.ssd_both + parameters.staircase_increment;
+	};	
+	shape.bar_left_rising.skip = false;
+	shape.bar_right_rising.skip = false;
+	shape.blankbar_left.skip = false;
+	shape.blankbar_right.skip = false;
+	shape.target_start.skip = false;
+	shape.target_success.skip = false;
+	text.success_stop.skip = false;
+	values.liftedbeforebars = false;
+]
+/ recorddata = true
+</trial>
+
+<trial stop_left>
+/ ontrialbegin = [
+	if (values.ssd_left < 50) {
+		values.ssd_left = 50;
+	}
+	;
+	values.ssd = values.ssd_left;
+	values.left_key_lifttime = 0;
+	values.right_key_lifttime = 0;
+	values.left_stop_bar_percent = values.ssd_left;
+	values.right_stop_bar_percent = parameters.max_trialduration;
+	shape.bar_left_rising.skip = false;
+	shape.bar_right_rising.skip = false;
+	shape.blankbar_left.skip = false;
+	shape.blankbar_right.skip = false;
+	shape.target_start.skip = false;
+	shape.target_fail.skip = false;
+	shape.target_success.skip = false;
+	shape.target_fail_bothfingers.skip = false;
+	text.success_stop_missed_target.skip = false;
+	text.success.skip = false;
+	text.stop_fail.skip = false;	
+]
+/ stimulustimes = [0 = target_start, blankbar_left, blankbar_right, bar_left_rising, bar_right_rising, blankbottomrectangle, remove_feedback, blanktoprectangle; 1000=shape.target_fail_bothfingers; 1000=shape.target_success; 1000=shape.target_fail; 1000=text.stop_error; 1000=text.stop_fail; 1000=text.success; 1000=success_stop_missed_target]
+/ beginresponsetime = -1
+/ response = mainresponse
+/ responseinterrupt = trial
+/ isvalidresponse = [
+	if (trial.stop_left.latency < parameters.max_trialduration) {
+		if (trial.stop_left.response == -44 && values.left_key_lifttime == 0) {
+			//if(trial.go.latency < parameters.randomdelay) {
+				//values.liftedbeforebars= true;
+				//values.left_key_lifttime = -1;
+			//} else {
+			values.left_key_lifttime = trial.stop_left.latency;
+			values.ssd_left = values.ssd_left - parameters.staircase_increment;
+			shape.target_success.skip = true;
+			text.success_stop_missed_target.skip = true;
+			text.success.skip = true;
+			if (trial.stop_left.latency < values.ssd_left) {
+				shape.blankbar_left.skip = true;
+				shape.bar_left_rising.skip = true;
+				shape.target_start.skip = true;
+				values.left_stop_bar_percent = values.left_key_lifttime;
+			};
+		};
+		if (trial.stop_left.response == -53 && values.right_key_lifttime == 0) {
+			values.right_key_lifttime = trial.stop_left.latency;
+			shape.blankbar_right.skip = true;
+			shape.bar_right_rising.skip = true;
+			shape.target_start.skip = true;
+			values.right_stop_bar_percent = values.right_key_lifttime;
+			if (values.right_key_lifttime <= 800 + parameters.target_tolerance && values.right_key_lifttime >= 800 - parameters.target_tolerance) {
+				shape.target_fail.skip = true;
+				text.success_stop_missed_target.skip = true;
+			};
+		};
+		
+		
+	};
+]
+// branch = [ // can't incorporate this logic above...
+	if (values.left_key_lifttime != 0 && values.right_key_lifttime == 0) {
+		trial.feedback_stop_error;
+	};
+]
+/ ontrialend = [
+	if (values.left_key_lifttime == 0 && values.right_key_lifttime == 0) { 
+		values.ssd_left = values.ssd_left - parameters.staircase_increment;
+	};
+	if (values.left_key_lifttime == 0 && values.right_key_lifttime <= 800 + parameters.target_tolerance && values.right_key_lifttime >= 800 - parameters.target_tolerance) {
+		values.ssd_left = values.ssd_left + parameters.staircase_increment;
+	};
+	if (values.left_key_lifttime == 0 && values.right_key_lifttime > 0 && (values.right_key_lifttime > 800 + parameters.target_tolerance || values.right_key_lifttime < 800 - parameters.target_tolerance)) {
+			values.ssd_left = values.ssd_left + parameters.staircase_increment;
+	};
+	shape.bar_left_rising.skip = false;
+	shape.bar_right_rising.skip = false;
+	shape.blankbar_left.skip = false;
+	shape.blankbar_right.skip = false;
+	shape.target_start.skip = false;
+	shape.target_fail.skip = false;
+	shape.target_success.skip = false;
+	text.success_stop_missed_target.skip = false;
+	text.success.skip = false;
+	text.stop_fail.skip = false;
+	shape.target_fail_bothfingers.skip = false;
+	values.liftedbeforebars = false;
+]
+/ recorddata = true
+</trial>
+
+<trial stop_right>
+/ ontrialbegin = [
+	if (values.ssd_right < 50) {
+		values.ssd_right = 50;
+	}
+	;
+	values.ssd = values.ssd_right;
+	values.left_key_lifttime = 0;
+	values.right_key_lifttime = 0;
+	values.left_stop_bar_percent = parameters.max_trialduration;
+	values.right_stop_bar_percent = values.ssd_right;
+	shape.bar_left_rising.skip = false;
+	shape.bar_right_rising.skip = false;
+	shape.blankbar_left.skip = false;
+	shape.blankbar_right.skip = false;
+	shape.target_start.skip = false;
+	shape.target_fail.skip = false;
+	shape.target_success.skip = false;
+	text.success_stop_missed_target.skip = false;
+	text.success.skip = false;
+	text.stop_fail.skip = false;
+	shape.target_fail_bothfingers.skip = false;	
+]
+/ stimulustimes = [0 = target_start, blankbar_left, blankbar_right, bar_left_rising, bar_right_rising, blankbottomrectangle, remove_feedback, blanktoprectangle; 1000=shape.target_fail_bothfingers; 1000=shape.target_success; 1000=shape.target_fail; 1000=text.stop_error; 1000=text.stop_fail; 1000=text.success; 1000=success_stop_missed_target]
+/ beginresponsetime = -1
+/ response = mainresponse
+/ responseinterrupt = trial
+/ isvalidresponse = [
+	if (trial.stop_right.latency < parameters.max_trialduration) {
+		if (trial.stop_right.response == -44 && values.left_key_lifttime == 0) {
+			//if(trial.go.latency < parameters.randomdelay) {
+				//values.liftedbeforebars= true;
+				//values.left_key_lifttime = -1;
+			//} else {
+			values.left_key_lifttime = trial.stop_right.latency;
+			shape.blankbar_left.skip = true;
+			shape.bar_left_rising.skip = true;
+			shape.target_start.skip = true;
+			values.left_stop_bar_percent = values.left_key_lifttime;
+			if (values.left_key_lifttime <= 800 + parameters.target_tolerance && values.left_key_lifttime >= 800 - parameters.target_tolerance) {
+				shape.target_fail.skip = true;
+				text.success_stop_missed_target.skip = true;
+			};
+			
+		};
+		if (trial.stop_right.response == -53 && values.right_key_lifttime == 0) {
+			values.right_key_lifttime = trial.stop_right.latency;
+			values.ssd_right = values.ssd_right - parameters.staircase_increment;
+			shape.target_success.skip = true;
+			text.success_stop_missed_target.skip = true;
+			text.success.skip = true;
+			if (trial.stop_right.latency < values.ssd_right) {
+				shape.blankbar_right.skip = true;
+				shape.bar_right_rising.skip = true;
+				shape.target_start.skip = true;
+				values.right_stop_bar_percent = values.right_key_lifttime;
+			};
+		};
+		
+		
+	};
+]
+// branch = [ // can't incorporate this logic above...
+	if (values.left_key_lifttime != 0 && values.right_key_lifttime == 0) {
+		trial.feedback_stop_error;
+	};
+]
+/ ontrialend = [
+	if (values.left_key_lifttime == 0 && values.right_key_lifttime == 0) { 
+		values.ssd_right = values.ssd_right - parameters.staircase_increment;
+	};
+	if (values.right_key_lifttime == 0 && values.left_key_lifttime <= 800 + parameters.target_tolerance && values.left_key_lifttime >= 800 - parameters.target_tolerance) {
+		values.ssd_right = values.ssd_right + parameters.staircase_increment;
+	};
+	if (values.right_key_lifttime == 0 && values.left_key_lifttime > 0 && (values.left_key_lifttime > 800 + parameters.target_tolerance || values.left_key_lifttime < 800 - parameters.target_tolerance)) {
+			values.ssd_right = values.ssd_right + parameters.staircase_increment;
+	};
+	shape.bar_left_rising.skip = false;
+	shape.bar_right_rising.skip = false;
+	shape.blankbar_left.skip = false;
+	shape.blankbar_right.skip = false;
+	shape.target_start.skip = false;
+	shape.target_fail.skip = false;
+	shape.target_success.skip = false;
+	text.success_stop_missed_target.skip = false;
+	text.success.skip = false;
+	text.stop_fail.skip = false;
+	shape.target_fail_bothfingers.skip = false;
+	values.liftedbeforebars = false;
+]
+/ recorddata = true
+</trial>
+
+
+/////////////////////////////////////////////
+Feedback
+/////////////////////////////////////////////
+
+<trial go_feedback_success>
+/ response = noresponse
+/ stimulusframes = [1 = target_success, blankbar_left_feedback, blankbar_right_feedback, bar_left_stopped_feedback, bar_right_stopped_feedback, blankbottomrectangle_feedback, success]
+/ trialduration = 2000
+/ recorddata = false
+/ ontrialend = [
+	shape.bar_left_rising.skip = false;
+	shape.bar_right_rising.skip = false;
+	values.liftedbeforebars = false;
+]
+</trial>
+
+<trial go_feedback_fail>
+/ response = noresponse
+/ stimulusframes = [1 = target_fail, blankbar_left_feedback, blankbar_right_feedback, bar_left_stopped_feedback, bar_right_stopped_feedback, blankbottomrectangle_feedback, go_fail]
+/ trialduration = 2000
+/ recorddata = false
+</trial>
+
+<trial stopboth_feedback_success>
+/ response = noresponse
+/ stimulusframes = [1 = target_success, blankbar_left_feedback, blankbar_right_feedback, bar_left_stopped_feedback, bar_right_stopped_feedback, blankbottomrectangle_feedback, success_stop]
+/ trialduration = 2000
+/ recorddata = false
+</trial>
+
+<trial stop_feedback_fail>
+/ response = noresponse
+/ stimulusframes = [1 = target_fail, blankbar_left_feedback, blankbar_right_feedback, bar_left_stopped_feedback, bar_right_stopped_feedback, blankbottomrectangle_feedback, stop_fail]
+/ trialduration = 2000
+/ recorddata = false
+</trial>
+
+<trial stop_feedback_success_misstarget>
+/ response = noresponse
+/ stimulusframes = [1 = target_fail, blankbar_left_feedback, blankbar_right_feedback, bar_left_stopped_feedback, bar_right_stopped_feedback, blankbottomrectangle_feedback, success_stop_missed_target]
+/ trialduration = 2000
+/ recorddata = false
+</trial>
+
+<trial feedback_stop_error>
+/ response = noresponse
+/ stimulusframes = [1 = target_fail, blankbar_left_feedback, blankbar_right_feedback, bar_left_stopped_feedback, bar_right_stopped_feedback, blankbottomrectangle_feedback, stop_error]
+/ trialduration = 2000
+/ recorddata = false
+</trial>
+
+********************
+raw data
+********************
+<data>
+/ columns = (build, computer.platform, date,time,subject, blockcode, blocknum, trial.pretrial_experiment.count, list.experimentdata.currentvalue, values.ssd, values.left_key_lifttime, values.right_key_lifttime)
+</data>
+
+************************************
+<block practiceblock>
+/ trials = [1-5=instructions; 6-15 = pretrial_practice]
+/ blockfeedback = (meanlatency, correct)
+</block>
+
+<block experimentalblocks>
+/ trials = [1-10 = pretrial_experiment]
+// blockfeedback = (meanlatency, correct)
+</block>
+
+************************************
+<expt>
+//preinstructions = (intro)
+/ blocks = [1=practiceblock]
+</expt>
