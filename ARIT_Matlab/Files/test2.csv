@@ -1,0 +1,13 @@
+block,GroupCount,mean_rt,std_rt,mean_left_rt,std_left_rt,mean_right_rt,std_right_rt,mean_correct,correct,stopping_correct
+1,27,-0.0022562,0.035111,0.79624,0.037322,0.79925,0.034252,0.48148,48.1481,0
+2,21,0.016804,0.028027,0.80925,0.027413,0.82436,0.031161,0.57143,57.1429,55.5556
+3,26,0.01526,0.027741,0.81718,0.030182,0.81334,0.028636,0.57692,57.6923,25
+4,22,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN
+5,20,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN
+6,22,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN
+7,23,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN
+8,20,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN
+9,21,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN
+10,22,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN
+11,22,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN
+12,24,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN

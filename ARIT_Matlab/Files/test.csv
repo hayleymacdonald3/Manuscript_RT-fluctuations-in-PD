@@ -1,0 +1,361 @@
+subject,block,trial_num,trial_type,stop_side,staircase,ssd,start_time,duration,complete,left_rt,right_rt,outcome,correct
+24,1,1,stop,both,3,0.6,1162898.9836,0,true,0.77537,0.7754,stop - failed stop,0
+24,1,2,go,na,NaN,NaN,1162902.7638,0,true,0.83202,0.83205,go - missed target,0
+24,1,3,go,na,NaN,NaN,1162906.9709,0,true,0.91492,0.87884,go - missed target,0
+24,1,4,go,na,NaN,NaN,1162918.4112,0,true,0.79126,0.79129,go - correct,1
+24,1,5,go,na,NaN,NaN,1162921.8155,0,true,0.7191,0.75241,go - missed target,0
+24,1,6,stop,left,1,0.6,1162924.9674,0,true,0.76618,0.78294,stop - failed stop,0
+24,1,7,go,na,NaN,NaN,1162928.4715,0,true,0.76057,0.74382,go - missed target,0
+24,1,8,go,na,NaN,NaN,1162931.8455,0,true,0.76871,0.76874,go - missed target,0
+24,1,9,go,na,NaN,NaN,1162935.1062,0,true,0.79021,0.80681,go - correct,1
+24,1,10,go,na,NaN,NaN,1162938.404,0,true,0.82457,0.84129,go - missed target,0
+24,1,11,go,na,NaN,NaN,1162941.8572,0,true,0.77022,0.78696,go - correct,1
+24,1,12,go,na,NaN,NaN,1162945.2302,0,true,0.79608,0.81283,go - correct,1
+24,1,13,go,na,NaN,NaN,1162949.1666,0,true,0.7916,0.80822,go - correct,1
+24,1,14,go,na,NaN,NaN,1162952.3074,0,true,0.81648,0.83313,go - missed target,0
+24,1,15,go,na,NaN,NaN,1162955.7291,0,true,0.76024,0.76027,go - missed target,0
+24,1,16,go,na,NaN,NaN,1162959.2759,0,true,0.74551,0.74554,go - missed target,0
+24,1,17,go,na,NaN,NaN,1162962.604,0,true,0.81626,0.81629,go - correct,1
+24,1,18,go,na,NaN,NaN,1162966.0415,0,true,0.77752,0.77755,go - correct,1
+24,1,19,go,na,NaN,NaN,1162969.3568,0,true,0.81106,0.82769,go - correct,1
+24,1,20,go,na,NaN,NaN,1162972.7621,0,true,0.75461,0.75464,go - missed target,0
+24,1,21,go,na,NaN,NaN,1162976.136,0,true,0.81305,0.81309,go - correct,1
+24,1,22,go,na,NaN,NaN,1162979.4006,0,true,0.81375,0.83057,go - missed target,0
+24,1,23,go,na,NaN,NaN,1162982.8459,0,true,0.76728,0.76731,go - missed target,0
+24,1,24,go,na,NaN,NaN,1162986.4797,0,true,0.78228,0.76566,go - missed target,0
+24,1,25,go,na,NaN,NaN,1162991.7774,0,true,0.79932,0.79935,go - correct,1
+24,1,26,go,na,NaN,NaN,1162995.3566,0,true,0.81892,0.81895,go - correct,1
+24,1,27,go,na,NaN,NaN,1162998.7686,0,true,0.8225,0.82253,go - correct,1
+24,1,28,stop,left,1,0.575,1163001.9403,0,true,0.76633,0.78301,stop - failed stop,0
+24,1,29,go,na,NaN,NaN,1163005.3222,0,true,0.83318,0.83321,go - missed target,0
+24,1,30,go,na,NaN,NaN,1163008.7636,0,true,0.8073,0.79064,go - correct,1
+24,2,31,stop,both,3,0.575,1163125.2622,0,true,NaN,NaN,stop - successful stop,1
+24,2,32,go,na,NaN,NaN,1163129.0932,0,true,0.81931,0.81934,go - correct,1
+24,2,33,stop,left,1,0.55,1163132.7202,0,true,0.85775,0.85778,stop - failed stop,0
+24,2,34,go,na,NaN,NaN,1163136.4467,0,true,0.81323,0.82988,go - correct,1
+24,2,35,go,na,NaN,NaN,1163139.9469,0,true,0.84522,0.84526,go - missed target,0
+24,2,36,stop,both,3,0.6,1163143.1913,0,true,NaN,NaN,stop - successful stop,1
+24,2,37,stop,both,3,0.625,1163146.5734,0,true,0.79971,NaN,stop - failed stop,0
+24,2,38,go,na,NaN,NaN,1163150.0056,0,true,0.83291,0.84973,go - missed target,0
+24,2,39,go,na,NaN,NaN,1163153.2545,0,true,0.83293,0.84974,go - missed target,0
+24,2,40,go,na,NaN,NaN,1163156.7297,0,true,0.78984,0.8065,go - correct,1
+24,2,41,go,na,NaN,NaN,1163160.2599,0,true,0.77514,0.80849,go - correct,1
+24,2,42,go,na,NaN,NaN,1163163.7618,0,true,0.77203,0.80538,go - correct,1
+24,2,43,go,na,NaN,NaN,1163167.2892,0,true,0.81009,0.82677,go - correct,1
+24,2,44,go,na,NaN,NaN,1163170.8545,0,true,0.79348,0.81019,go - correct,1
+24,2,45,go,na,NaN,NaN,1163174.416,0,true,0.81414,0.81417,go - correct,1
+24,2,46,stop,left,1,0.525,1163177.9159,0,true,NaN,0.87966,stop - stop but missed target,0
+24,2,47,go,na,NaN,NaN,1163182.039,0,true,0.82189,0.83848,go - missed target,0
+24,2,48,stop,right,2,0.6,1163185.6043,0,true,0.95526,NaN,stop - stop but missed target,1
+24,2,49,go,na,NaN,NaN,1163189.4041,0,true,0.83753,0.83756,go - missed target,0
+24,2,50,go,na,NaN,NaN,1163193.0408,0,true,0.83289,0.83292,go - missed target,0
+24,2,51,go,na,NaN,NaN,1163196.5388,0,true,0.80031,0.81707,go - correct,1
+24,2,52,go,na,NaN,NaN,1163200.2604,0,true,0.82745,0.81079,go - correct,1
+24,2,53,go,na,NaN,NaN,1163204.0709,0,true,0.74899,0.7656,go - missed target,0
+24,2,54,go,na,NaN,NaN,1163207.6539,0,true,0.78138,0.79813,go - correct,1
+24,2,55,stop,right,2,0.625,1163211.3677,0,true,0.78292,0.79958,stop - failed stop,0
+24,2,56,go,na,NaN,NaN,1163214.9155,0,true,0.80051,0.83392,go - missed target,0
+24,2,57,go,na,NaN,NaN,1163218.6567,0,true,0.85808,0.92475,go - missed target,0
+24,2,58,go,na,NaN,NaN,1163222.31,0,true,0.78686,0.78689,go - correct,1
+24,2,59,stop,both,3,0.6,1163226.0111,0,true,NaN,NaN,stop - successful stop,1
+24,2,60,stop,both,3,0.625,1163229.9056,0,true,NaN,NaN,stop - successful stop,1
+24,3,61,go,na,NaN,NaN,1163344.6992,0,true,0.8053,0.80533,go - correct,1
+24,3,62,go,na,NaN,NaN,1163348.288,0,true,0.83203,0.81519,go - missed target,0
+24,3,63,go,na,NaN,NaN,1163351.912,0,true,0.80654,0.78994,go - correct,1
+24,3,64,go,na,NaN,NaN,1163355.4959,0,true,0.82146,0.80488,go - correct,1
+24,3,65,stop,right,2,0.6,1163358.9754,0,true,0.80763,0.80766,stop - failed stop,0
+24,3,66,go,na,NaN,NaN,1163362.4129,0,true,0.81874,0.81877,go - correct,1
+24,3,67,go,na,NaN,NaN,1163365.8844,0,true,0.84599,0.8293,go - missed target,0
+24,3,68,go,na,NaN,NaN,1163369.3844,0,true,0.79481,0.77815,go - correct,1
+24,3,69,go,na,NaN,NaN,1163372.8843,0,true,0.87709,0.8104,go - missed target,0
+24,3,70,go,na,NaN,NaN,1163376.4351,0,true,0.79169,0.79172,go - correct,1
+24,3,71,go,na,NaN,NaN,1163380.0073,0,true,0.76817,0.75158,go - missed target,0
+24,3,72,go,na,NaN,NaN,1163383.4965,0,true,0.8111,0.81113,go - correct,1
+24,3,73,go,na,NaN,NaN,1163387.183,0,true,0.8067,0.80673,go - correct,1
+24,3,74,go,na,NaN,NaN,1163390.7748,0,true,0.81373,0.81376,go - correct,1
+24,3,75,go,na,NaN,NaN,1163394.3714,0,true,0.81582,0.81585,go - correct,1
+24,3,76,go,na,NaN,NaN,1163397.9438,0,true,0.80887,0.8089,go - correct,1
+24,3,77,go,na,NaN,NaN,1163401.5071,0,true,0.82763,0.82766,go - correct,1
+24,3,78,go,na,NaN,NaN,1163405.0295,0,true,0.83737,0.8374,go - missed target,0
+24,3,79,go,na,NaN,NaN,1163408.5363,0,true,0.79594,0.79597,go - correct,1
+24,3,80,stop,right,2,0.575,1163412.2091,0,true,0.77196,0.77199,stop - failed stop,0
+24,3,81,go,na,NaN,NaN,1163415.6319,0,true,0.79789,0.81467,go - correct,1
+24,3,82,go,na,NaN,NaN,1163419.1319,0,true,0.84689,0.88008,go - missed target,0
+24,3,83,go,na,NaN,NaN,1163422.7588,0,true,0.75193,0.75197,go - missed target,0
+24,3,84,go,na,NaN,NaN,1163426.122,0,true,0.85414,0.85417,go - missed target,0
+24,3,85,go,na,NaN,NaN,1163429.9667,0,true,0.80813,0.80816,go - correct,1
+24,3,86,stop,left,1,0.55,1163433.6933,0,true,0.89701,0.94693,stop - failed stop,0
+24,3,87,go,na,NaN,NaN,1163437.5575,0,true,0.79856,0.83159,go - missed target,0
+24,3,88,go,na,NaN,NaN,1163441.1209,0,true,0.81679,0.83352,go - missed target,0
+24,3,89,go,na,NaN,NaN,1163444.7263,0,true,0.89336,0.86007,go - missed target,0
+24,3,90,stop,right,2,0.55,1163448.445,0,true,0.87344,NaN,stop - stop but missed target,1
+24,4,91,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,92,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,93,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,94,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,95,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,96,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,97,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,98,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,99,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,100,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,101,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,102,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,103,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,104,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,105,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,106,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,107,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,108,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,109,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,110,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,111,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,112,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,113,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,114,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,115,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,116,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,117,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,118,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,119,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,4,120,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,121,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,122,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,123,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,124,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,125,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,126,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,127,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,128,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,129,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,130,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,131,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,132,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,133,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,134,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,135,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,136,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,137,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,138,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,139,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,140,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,141,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,142,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,143,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,144,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,145,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,146,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,147,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,148,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,149,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,5,150,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,151,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,152,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,153,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,154,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,155,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,156,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,157,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,158,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,159,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,160,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,161,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,162,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,163,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,164,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,165,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,166,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,167,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,168,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,169,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,170,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,171,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,172,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,173,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,174,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,175,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,176,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,177,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,178,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,179,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,6,180,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,181,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,182,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,183,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,184,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,185,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,186,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,187,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,188,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,189,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,190,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,191,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,192,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,193,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,194,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,195,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,196,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,197,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,198,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,199,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,200,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,201,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,202,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,203,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,204,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,205,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,206,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,207,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,208,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,209,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,7,210,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,211,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,212,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,213,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,214,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,215,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,216,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,217,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,218,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,219,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,220,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,221,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,222,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,223,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,224,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,225,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,226,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,227,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,228,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,229,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,230,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,231,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,232,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,233,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,234,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,235,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,236,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,237,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,238,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,239,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,8,240,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,241,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,242,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,243,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,244,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,245,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,246,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,247,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,248,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,249,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,250,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,251,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,252,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,253,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,254,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,255,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,256,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,257,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,258,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,259,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,260,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,261,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,262,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,263,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,264,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,265,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,266,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,267,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,268,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,269,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,9,270,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,271,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,272,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,273,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,274,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,275,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,276,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,277,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,278,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,279,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,280,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,281,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,282,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,283,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,284,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,285,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,286,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,287,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,288,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,289,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,290,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,291,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,292,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,293,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,294,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,295,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,296,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,297,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,298,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,299,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,10,300,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,301,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,302,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,303,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,304,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,305,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,306,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,307,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,308,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,309,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,310,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,311,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,312,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,313,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,314,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,315,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,316,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,317,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,318,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,319,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,320,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,321,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,322,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,323,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,324,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,325,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,326,stop,right,2,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,327,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,328,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,329,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,11,330,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,331,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,332,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,333,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,334,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,335,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,336,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,337,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,338,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,339,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,340,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,341,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,342,stop,left,1,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,343,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,344,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,345,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,346,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,347,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,348,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,349,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,350,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,351,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,352,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,353,stop,both,3,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,354,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,355,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,356,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,357,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,358,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,359,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
+24,12,360,go,na,NaN,NaN,NaN,NaN,false,NaN,NaN,incomplete,NaN
