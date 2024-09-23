@@ -3,7 +3,7 @@ Behavioural tasks and analysis codes for manuscript submission (Title: Capturing
 
 Matlab behavioural task version:
 Main task script: selecinhib.m
-Main program files in "private". 
+Main program files in "Files". 
 Files within "New" additional to create trial number, combination and structure.
 This version of task includes arduino program to control microswitches which record behavioural response.
 
